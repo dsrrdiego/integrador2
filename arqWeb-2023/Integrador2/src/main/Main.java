@@ -6,7 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import modelos.Estudiante;
+import repository.RepositoryFactory;
+
+import entity.Estudiante;
+import entity.Carrera;
+import entity.Inscripto;
 
 public class Main {
 
@@ -18,11 +22,20 @@ public class Main {
 
 		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		// em.persist(e1);
-		List<Estudiante> estudiantes = em.createQuery("select c from Estudiante c").getResultList();
-		estudiantes.forEach(c -> System.out.println(c));
+		/*List<Estudiante> estudiantes = em.createQuery("select e from Estudiante e").getResultList();
+		estudiantes.forEach(c -> System.out.println(c));*/
 
 		// a) dar de alta un estudiante
 		// puntoA(em);
+		RepositoryFactory.getInstance(RepositoryFactory.MYSQL);
+
+		Estudiante e1 = new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		Estudiante e = RepositoryFactory.get_repositorio_estudiante().save(e1);
+
+		Estudiante e2 = new Estudiante(2,"manolo","fugo",51,18,"Chaves");
+		Estudiante e = RepositoryFactory.get_repositorio_estudiante().save(e2);
+
+		System.out.println(j);
 
 		// b) matricular un estudiante en una carrera
 		puntoB();
@@ -30,9 +43,12 @@ public class Main {
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
 		puntoC();
+		List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
 
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
 		puntoD();
+		int nro_libreta = 123;
+		RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
 
 		// e) recuperar todos los estudiantes, en base a su género.
 		puntoE();

@@ -39,13 +39,14 @@ public class Estudiante {
 		super();
 	}
 
-	public Estudiante(int nro_libreta, String nombre, String apellido, int nro_doc, int edad, String ciudad) {
+	public Estudiante(int nro_libreta, String nombre, String apellido, int nro_doc, int edad, String genero, String ciudad) {
 		super();
 		this.id = nro_libreta;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nro_doc = nro_doc;
 		this.edad = edad;
+		this.genero = genero;
 		this.ciudad_reside = ciudad;
 	}
 
@@ -81,6 +82,14 @@ public class Estudiante {
 		this.nro_doc = nro_doc;
 	}
 
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
 	public String getCiudadReside() {
 		return ciudad_reside;
 	}
@@ -92,7 +101,7 @@ public class Estudiante {
 	@Override
 	public String toString() {
 		return "Estudiante [id=" + id + ", nombre=" + nombre + "apellido=" + apellido + ", nro_doc="
-				+ nro_doc
+				+ nro_doc + ", genero=" + genero +
 				+ ", ciudad residente=" + ciudad_reside + "]";
 	}
 }

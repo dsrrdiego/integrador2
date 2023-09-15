@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 public class Inscripto {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_inscripto;
+
 	// @EmbeddedId
 	// private claveCompuestaInscripto ids;
 	@Id
@@ -38,6 +42,9 @@ public class Inscripto {
 	@Column
 	private boolean graduado;
 
+	@Column
+	private int anio_graduado;
+
 	/// @JoinColumn(name="")
 
 	// @ManyToOne
@@ -55,6 +62,7 @@ public class Inscripto {
 		this.carrera = carrera;
 		this.antiguedad = antiguedad;
 		this.graduado = graduado;
+		this.anio_graduado = 0; // por defecto es 0 ya que no esta graduado
 	}
 
 	public void setAntiguedad(int antiguedad) {
@@ -68,6 +76,15 @@ public class Inscripto {
 	public void setGraduado(boolean graduado) {
 		this.graduado = graduado;
 	}
+
+	public boolean isGraduado() {
+		return anio_graduado;
+	}
+
+	public void setAnioGraduado(int anio_graduado) {
+		this.graduado = anio_graduado;
+	}
+
 	/*
 	 * @Override
 	 * public String toString() {

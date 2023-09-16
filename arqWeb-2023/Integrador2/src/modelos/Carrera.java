@@ -1,15 +1,14 @@
 package modelos;
 
-
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 // import antlr.collections.List;
 
 // import org.hibernate.mapping.List;
-
-
 
 @Entity
 public class Carrera {
@@ -18,30 +17,27 @@ public class Carrera {
 	private int id_carrera;
 
 	@Column
-    private String nombre;
+	private String nombre;
 
 	@Column
-    private int duracion;
+	private int duracion;
 
 	@Column
-    private String institucion;
+	private String institucion;
 
-	@OneToMany
-	private List<Carrera> carreras;
 
-	//@OneToMany
-	//private Carrera carrera;
-	
+	@ManyToMany
+	private Set<Estudiante> inscriptoSet=new HashSet<>();
 
-    public Carrera(){
-        super();
-    }
+	public Carrera() {
+		super();
+	}
 
-    public Carrera(String nombre, int duracion, String institucion){
-        this.nombre = nombre;
-        this.duracion = duracion;
-        this.institucion = institucion;
-    }
+	public Carrera(String nombre, int duracion, String institucion) {
+		this.nombre = nombre;
+		this.duracion = duracion;
+		this.institucion = institucion;
+	}
 
 	public int getId_carrera() {
 		return id_carrera;
@@ -74,11 +70,5 @@ public class Carrera {
 	public void setInstitucion(String institucion) {
 		this.institucion = institucion;
 	}
-    
-    
-    
-    
-
-    
 
 }

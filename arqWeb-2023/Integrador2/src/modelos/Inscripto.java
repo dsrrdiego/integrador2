@@ -5,32 +5,11 @@ import javax.persistence.*;
 @Entity
 public class Inscripto {
 
-	// @EmbeddedId
-	// private claveCompuestaInscripto ids;
 	@Id
 	private int nro_libreta;
 
 	@Column
 	private int carrera;
-	
-	// @ManyToOne
-	// @JoinColumn(name = "id_carrera")
-	// private Inscripto inscripto;
-	
-	/*
-	
-		// private Estudiante estudiante;
-		// @JoinColumn(name = "nro_libreta")
-	 * @Id
-	 * 
-	 * @JoinColumn(name="nro_libreta")
-	 * private Estudiante estudiante;
-	 */
-	// @ManyToOne
-	// @JoinColumn(name="id_carrera")
-	// @Column
-	// private int carrera;
-	// private Carrera carrera;
 
 	@Column
 	private int antiguedad;
@@ -38,13 +17,8 @@ public class Inscripto {
 	@Column
 	private boolean graduado;
 
-	/// @JoinColumn(name="")
-
-	// @ManyToOne
-	// private Lis<Estudiante> estudiante;
-
-	// @ManyToOne
-	// private Lis<Carrera> carreras;
+	@Column
+	private String fecha;
 
 	public Inscripto() {
 		super();

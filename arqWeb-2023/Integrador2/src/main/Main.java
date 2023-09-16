@@ -58,10 +58,12 @@ public class Main {
 	}
 
 	private static void puntoA(EntityManager em) {
-		Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		// Estudiante e1=new Estudiante("olfa","croquetis","29555000",33,"fem","3a");
+		Estudiante e1=new Estudiante("trotun", "grapis", 22999888 ,22, "fem","3a");
 		em.persist(e1);
-		Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
-		em.persist(e2);
+		// Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
+		// em.persist(e2);
 	}
 
 	private static void puntoB() {

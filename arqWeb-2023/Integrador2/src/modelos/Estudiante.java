@@ -1,10 +1,15 @@
 package modelos;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -32,62 +37,99 @@ public class Estudiante {
 	@Column(name = "ciudad")
 	private String ciudad_reside;
 
-	@OneToMany
-	private List<Estudiante> estudiante;
+	@ManyToMany(mappedBy = "inscriptoSet")
+	private Set<Carrera> carreraSet=new HashSet<>();
 
 	public Estudiante() {
 		super();
 	}
 
-	public Estudiante(int nro_libreta, String nombre, String apellido, int nro_doc, int edad, String ciudad) {
-		super();
-		this.id = nro_libreta;
+	
+	public Estudiante(String nombre, String apellido, Integer nro_doc, Integer edad, String genero,
+			String ciudad_reside) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nro_doc = nro_doc;
 		this.edad = edad;
-		this.ciudad_reside = ciudad;
+		this.genero = genero;
+		this.ciudad_reside = ciudad_reside;
 	}
+
+
+	public int getId() {
+		return id;
+	}
+
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
 	public String getApellido() {
 		return apellido;
 	}
 
+
+	public Integer getNro_doc() {
+		return nro_doc;
+	}
+
+
+	public Integer getEdad() {
+		return edad;
+	}
+
+
+	public String getGenero() {
+		return genero;
+	}
+
+
+	public String getCiudad_reside() {
+		return ciudad_reside;
+	}
+
+
+	public Set<Carrera> getCarreraSet() {
+		return carreraSet;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
-	public int getEdad() {
-		return edad;
-	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
-	public int getNroDoc() {
-		return nro_doc;
-	}
-
-	public void setNroDoc(int nro_doc) {
+	public void setNro_doc(Integer nro_doc) {
 		this.nro_doc = nro_doc;
 	}
 
-	public String getCiudadReside() {
-		return ciudad_reside;
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
 	}
 
-	public void setCiudadReside(String ciudad) {
-		this.ciudad_reside = ciudad;
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
+
+
+	public void setCiudad_reside(String ciudad_reside) {
+		this.ciudad_reside = ciudad_reside;
+	}
+
+
+	public void setCarreraSet(Set<Carrera> carreraSet) {
+		this.carreraSet = carreraSet;
+	}
+
 
 	@Override
 	public String toString() {

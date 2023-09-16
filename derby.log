@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Sep 14 20:40:19 ART 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018a-9611-1d4c-0000048058c0 
+Fri Sep 15 23:22:12 ART 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018a-9bcb-af80-000004823df0 
 on database directory /home/diego/Escritorio/ii2/exampleDBJPA with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@42110406 
 Loaded from file:/home/diego/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Eclipse Adoptium

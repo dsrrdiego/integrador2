@@ -19,6 +19,10 @@ public class Estudiante {
 	@Column(name = "nro_libreta")
 	private int id;
 
+    // Relación con Inscripto
+    @OneToMany(mappedBy = "estudiante")
+	private List<Inscripto> inscripciones;
+
 	@Column
 	private String nombre;
 
@@ -37,16 +41,14 @@ public class Estudiante {
 	@Column(name = "ciudad")
 	private String ciudad_reside;
 
-	@ManyToMany(mappedBy = "inscriptoSet")
-	private Set<Carrera> carreraSet=new HashSet<>();
-
+	
 	public Estudiante() {
 		super();
 	}
 
 	
-	public Estudiante(String nombre, String apellido, Integer nro_doc, Integer edad, String genero,
-			String ciudad_reside) {
+	public Estudiante(Integer id, String nombre, String apellido, Integer nro_doc, Integer edad, String genero, String ciudad_reside) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nro_doc = nro_doc;
@@ -57,6 +59,9 @@ public class Estudiante {
 
 
 	public int getId() {
+		return id;
+	}
+	public int setId(int id) {
 		return id;
 	}
 
@@ -91,9 +96,7 @@ public class Estudiante {
 	}
 
 
-	public Set<Carrera> getCarreraSet() {
-		return carreraSet;
-	}
+	
 
 
 	public void setNombre(String nombre) {
@@ -126,9 +129,7 @@ public class Estudiante {
 	}
 
 
-	public void setCarreraSet(Set<Carrera> carreraSet) {
-		this.carreraSet = carreraSet;
-	}
+	
 
 
 	@Override

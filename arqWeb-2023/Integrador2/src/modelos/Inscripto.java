@@ -6,10 +6,17 @@ import javax.persistence.*;
 public class Inscripto {
 
 	@Id
-	private int nro_libreta;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-	@Column
-	private int carrera;
+    @ManyToOne
+    @JoinColumn(name = "nro_libreta_estudiante")
+    private Estudiante estudiante;
+
+    @ManyToOne
+    @JoinColumn(name = "id_carrera")
+    private Carrera carrera;
 
 	@Column
 	private int antiguedad;
@@ -24,8 +31,8 @@ public class Inscripto {
 		super();
 	}
 
-	public Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado) {
-		this.nro_libreta =nro_libreta ;
+	public Inscripto(Estudiante estudiante, Carrera carrera, int antiguedad, boolean graduado) {
+		this.estudiante = estudiante;
 		this.carrera = carrera;
 		this.antiguedad = antiguedad;
 		this.graduado = graduado;

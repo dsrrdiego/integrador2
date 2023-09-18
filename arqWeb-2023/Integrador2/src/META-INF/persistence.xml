@@ -7,6 +7,8 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
 		<class>main.modelos.Estudiante</class>
+		<class>main.modelo.Carrera</class>
+		<class>main.modelos.Inscripto</class>
 		
 		<properties>
 			<!-- Propiedades de configuracion de JDBC para Derby /-->

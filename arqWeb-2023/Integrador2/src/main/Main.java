@@ -6,7 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import modelos.Carrera;
 import modelos.Estudiante;
+import modelos.Inscripto;
 
 public class Main {
 
@@ -22,7 +24,7 @@ public class Main {
 		estudiantes.forEach(c -> System.out.println(c));
 
 		// a) dar de alta un estudiante
-		// puntoA(em);
+		puntoA(em);
 
 		// b) matricular un estudiante en una carrera
 		puntoB();
@@ -60,13 +62,17 @@ public class Main {
 	private static void puntoA(EntityManager em) {
 		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		// Estudiante e1=new Estudiante("olfa","croquetis","29555000",33,"fem","3a");
-		Estudiante e1=new Estudiante("trotun", "grapis", 22999888 ,22, "fem","3a");
+		Estudiante e1=new Estudiante(456,"trotun", "grapis", 22999888 ,22, "fem","3a");
 		em.persist(e1);
 		// Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
 		// em.persist(e2);
 	}
 
-	private static void puntoB() {
+	private static void puntoB() { 
+		
+		Carrera c1 = new Carrera("Tudai", 2, "ee");
+		
+		Inscripto i1 = new Inscripto(e1.setId(234), "Tudai", 2, false);
 	}
 
 	private static void puntoC() {

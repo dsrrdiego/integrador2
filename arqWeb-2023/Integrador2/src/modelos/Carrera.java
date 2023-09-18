@@ -16,6 +16,10 @@ public class Carrera {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_carrera;
 
+    // Relación con Inscripto
+    @OneToMany(mappedBy = "carrera")
+    private List<Inscripto> inscripciones;
+
 	@Column
 	private String nombre;
 
@@ -24,10 +28,6 @@ public class Carrera {
 
 	@Column
 	private String institucion;
-
-
-	@ManyToMany
-	private Set<Estudiante> inscriptoSet=new HashSet<>();
 
 	public Carrera() {
 		super();

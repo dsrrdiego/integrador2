@@ -38,27 +38,33 @@ public class Main {
 		System.out.println(j);
 
 		// b) matricular un estudiante en una carrera
-		puntoB();
+		puntoB(e1, 3, '2023');
+		puntoB(e2, 3, '2023');
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
 		puntoC();
-		List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
 
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
-		puntoD();
 		int nro_libreta = 123;
-		RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
+		puntoD(nro_libreta);
+		
+		
 
 		// e) recuperar todos los estudiantes, en base a su género.
 		puntoE();
+		
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
+		
+
 		puntoF();
 
 		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
 		// de residencia.
+		
+
 		puntoG();
 
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
@@ -74,34 +80,60 @@ public class Main {
 	}
 
 	private static void puntoA(EntityManager em) {
+
 		Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		em.persist(e1);
 		Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
 		em.persist(e2);
 	}
 
-	private static void puntoB() {
+	private static void puntoB(EntityManager em, e1, carrera, '2023') {
+
+		Inscripto ins = new Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado); 
+		em.save(ins);
+
 	}
 
 	private static void puntoC() {
+
+		return List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
 	}
 
-	private static void puntoD() {
+	private static void puntoD(nro_libreta) {
+
+		return RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
 	}
 
 	private static void puntoE() {
+
+		// SELECT * FROM `estudiante` WHERE genero = ? ORDER BY apellido, nombre
 	}
 
 	private static void puntoF() {
+
+		/* SELECT * FROM `inscripto` as ins
+		INNER JOIN estudiante as e on ins.nro_libreta = e.nro_libreta
+		INNER JOIN carrera as c on ins.carrera = c.id_carrera
+		ORDER BY e.apellido, e.nombre; */
 	}
 
 	private static void puntoG() {
+
+		/*SELECT * FROM `inscripto` as ins 
+		INNER JOIN estudiante as e on ins.nro_libreta = e.nro_libreta 
+		INNER JOIN carrera as c on ins.carrera = c.id_carrera where c.id_carrera = 3 and e.ciudad_reside like '%ne%' ORDER BY e.apellido, e.nombre; */
 	}
 
 	private static void puntoH() {
 	}
 
 	private static void punto3() {
+
+		/* SELECT * FROM `inscripto` as ins
+		INNER JOIN estudiante as e on ins.nro_libreta = e.nro_libreta
+		INNER JOIN carrera as c on ins.carrera = c.id_carrera
+        where ins.graduado= 1 
+		ORDER BY ins.anio_graduado DESC,  c.nombre, e.apellido, e.nombre; */
 	}
 
 }

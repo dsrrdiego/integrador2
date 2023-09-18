@@ -2,6 +2,6 @@ package repository;
 
 import entity.Inscripto;
 
-public interfaceInscriptoRepository extends BaseRepository<Inscripto, Integer> {
+public interface InscriptoRepository extends BaseRepository<Inscripto, Integer> {
     // Metodos especificos de InscriptoRepository
 }

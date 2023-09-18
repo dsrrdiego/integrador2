@@ -1,4 +1,4 @@
-package modelos;
+package entity;
 
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class Carrera {
         this.institucion = institucion;
     }
 
-	public int getId_carrera() {
+	public int getId() {
 		return id_carrera;
 	}
 

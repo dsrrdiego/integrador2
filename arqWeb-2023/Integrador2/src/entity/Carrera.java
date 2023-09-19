@@ -17,33 +17,30 @@ public class Carrera {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_carrera;
 
-	@Column
-    private String nombre;
+    // Relación con Inscripto
+    @OneToMany(mappedBy = "carrera")
+    private List<Inscripto> inscripciones;
 
 	@Column
-    private int duracion;
+	private String nombre;
 
 	@Column
-    private String institucion;
+	private int duracion;
 
-	@OneToMany
-	private List<Carrera> carreras;
+	@Column
+	private String institucion;
 
-	//@OneToMany
-	//private Carrera carrera;
-	
+	public Carrera() {
+		super();
+	}
 
-    public Carrera(){
-        super();
-    }
+	public Carrera(String nombre, int duracion, String institucion) {
+		this.nombre = nombre;
+		this.duracion = duracion;
+		this.institucion = institucion;
+	}
 
-    public Carrera(String nombre, int duracion, String institucion){
-        this.nombre = nombre;
-        this.duracion = duracion;
-        this.institucion = institucion;
-    }
-
-	public int getId() {
+	public int getId_carrera() {
 		return id_carrera;
 	}
 
@@ -74,11 +71,11 @@ public class Carrera {
 	public void setInstitucion(String institucion) {
 		this.institucion = institucion;
 	}
-    
-    
-    
-    
 
-    
+	@Override
+	public String toString() {
+		return "Carrera [nombre=" + nombre + "]";
+	}
+	
 
 }

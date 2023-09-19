@@ -25,7 +25,7 @@ public class Inscripto {
 	private boolean graduado;
 
 	@Column
-	private String fecha;
+	private String fechaEgreso;
 
 	public Inscripto() {
 		super();

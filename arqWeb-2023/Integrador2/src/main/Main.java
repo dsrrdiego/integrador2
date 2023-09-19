@@ -33,7 +33,7 @@ public class Main {
 		//puntoA(em);
 
 		// b) matricular un estudiante en una carrera
-		//puntoB(em);
+		puntoB(em);
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.

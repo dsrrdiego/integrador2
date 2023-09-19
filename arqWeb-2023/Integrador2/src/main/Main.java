@@ -6,11 +6,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+<<<<<<< HEAD
 import repository.RepositoryFactory;
 
 import entity.Estudiante;
 import entity.Carrera;
 import entity.Inscripto;
+=======
+import modelos.Carrera;
+import modelos.Estudiante;
+import modelos.Inscripto;
+>>>>>>> manurama
 
 public class Main {
 
@@ -24,6 +30,12 @@ public class Main {
 		// em.persist(e1);
 		/*List<Estudiante> estudiantes = em.createQuery("select e from Estudiante e").getResultList();
 		estudiantes.forEach(c -> System.out.println(c));*/
+
+		List<Carrera> carreras = em.createQuery("select c from Carrera c").getResultList();
+		carreras.forEach(c -> System.out.println(c));
+
+		List<Inscripto> inscriptos = em.createQuery("select c from Inscripto c").getResultList();
+		inscriptos.forEach(c -> System.out.println(c));
 
 		// a) dar de alta un estudiante
 		// puntoA(em);
@@ -82,16 +94,30 @@ public class Main {
 	private static void puntoA(EntityManager em) {
 
 		Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		// Estudiante e1=new Estudiante("olfa","croquetis","29555000",33,"fem","3a");
+		Estudiante e1=new Estudiante(456,"trotun", "grapis", 22999888 ,22, "fem","3a");
 		em.persist(e1);
-		Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
-		em.persist(e2);
+		// Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
+		// em.persist(e2);
 	}
 
 	private static void puntoB(EntityManager em, e1, carrera, '2023') {
 
 		Inscripto ins = new Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado); 
 		em.save(ins);
+	}
 
+	
+	private static void puntoB(EntityManager em) { 
+		Estudiante e3=new Estudiante(822,"trotun", "grapis", 22999888 ,22, "fem","3a");
+		em.persist(e3);
+		
+		Carrera c1 = new Carrera("Tudai", 2, "ee");
+		em.persist(c1);
+		
+		Inscripto i1 = new Inscripto(e3, c1, 2, false);
+		em.persist(i1);
 	}
 
 	private static void puntoC() {

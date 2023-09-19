@@ -6,35 +6,17 @@ import javax.persistence.*;
 public class Inscripto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id_inscripto;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-	// @EmbeddedId
-	// private claveCompuestaInscripto ids;
-	@Id
-	private int nro_libreta;
+    @ManyToOne
+    @JoinColumn(name = "nro_libreta_estudiante")
+    private Estudiante estudiante;
 
-	@Column
-	private int carrera;
-	
-	// @ManyToOne
-	// @JoinColumn(name = "id_carrera")
-	// private Inscripto inscripto;
-	
-	/*
-	
-		// private Estudiante estudiante;
-		// @JoinColumn(name = "nro_libreta")
-	 * @Id
-	 * 
-	 * @JoinColumn(name="nro_libreta")
-	 * private Estudiante estudiante;
-	 */
-	// @ManyToOne
-	// @JoinColumn(name="id_carrera")
-	// @Column
-	// private int carrera;
-	// private Carrera carrera;
+    @ManyToOne
+    @JoinColumn(name = "id_carrera")
+    private Carrera carrera;
 
 	@Column
 	private int antiguedad;
@@ -43,6 +25,7 @@ public class Inscripto {
 	private boolean graduado;
 
 	@Column
+<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Inscripto.java
 	private int anio_graduado;
 
 	/// @JoinColumn(name="")
@@ -52,13 +35,16 @@ public class Inscripto {
 
 	// @ManyToOne
 	// private Lis<Carrera> carreras;
+=======
+	private String fecha;
+>>>>>>> manurama:arqWeb-2023/Integrador2/src/modelos/Inscripto.java
 
 	public Inscripto() {
 		super();
 	}
 
-	public Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado) {
-		this.nro_libreta =nro_libreta ;
+	public Inscripto(Estudiante estudiante, Carrera carrera, int antiguedad, boolean graduado) {
+		this.estudiante = estudiante;
 		this.carrera = carrera;
 		this.antiguedad = antiguedad;
 		this.graduado = graduado;
@@ -77,13 +63,6 @@ public class Inscripto {
 		this.graduado = graduado;
 	}
 
-	public boolean isGraduado() {
-		return anio_graduado;
-	}
-
-	public void setAnioGraduado(int anio_graduado) {
-		this.graduado = anio_graduado;
-	}
 
 	/*
 	 * @Override
@@ -93,5 +72,10 @@ public class Inscripto {
 	 * + ", antiguedad=" + antiguedad + ", graduado=" + graduado + "]";
 	 * }
 	 */
+	@Override
+	public String toString() {
+		return "Inscripto [estudiante=" + estudiante + ", carrera=" + carrera + ", graduado=" + graduado + "]";
+	}
+	
 
 }

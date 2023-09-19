@@ -1,4 +1,4 @@
-package modelos;
+package entity;
 
 import javax.persistence.*;
 
@@ -34,7 +34,7 @@ public class Inscripto {
 
 	// @ManyToOne
 	// private Lis<Carrera> carreras;
-	private String fechaEgreso;
+	//private String fechaEgreso;
 
 	public Inscripto() {
 		super();

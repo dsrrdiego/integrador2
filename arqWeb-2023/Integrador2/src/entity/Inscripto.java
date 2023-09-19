@@ -26,29 +26,8 @@ public class Inscripto {
 
 	@Column
 	private String fechaEgreso;
-
-	public Inscripto() {
-		super();
-	}
-
-	public Inscripto(Estudiante estudiante, Carrera carrera, int antiguedad, boolean graduado) {
-		this.estudiante = estudiante;
-		this.carrera = carrera;
-		this.antiguedad = antiguedad;
-		this.graduado = graduado;
-	}
-
-	public void setAntiguedad(int antiguedad) {
-		this.antiguedad = antiguedad;
-	}
-
-	public boolean isGraduado() {
-		return graduado;
-	}
-
-	public void setGraduado(boolean graduado) {
-		this.graduado = graduado;
-	}
+	
+	private int anio_graduado;
 
 	@Override
 	public String toString() {

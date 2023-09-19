@@ -49,13 +49,11 @@ public class Inscripto {
 	public void setGraduado(boolean graduado) {
 		this.graduado = graduado;
 	}
-	/*
-	 * @Override
-	 * public String toString() {
-	 * return "Inscripto [nro_libreta_estudiante=" + nro_libreta_estudiante +
-	 * ", id_carrera=" + id_carrera
-	 * + ", antiguedad=" + antiguedad + ", graduado=" + graduado + "]";
-	 * }
-	 */
+
+	@Override
+	public String toString() {
+		return "Inscripto [estudiante=" + estudiante + ", carrera=" + carrera + ", graduado=" + graduado + "]";
+	}
+	
 
 }

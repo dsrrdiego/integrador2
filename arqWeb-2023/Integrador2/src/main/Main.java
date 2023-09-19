@@ -23,11 +23,17 @@ public class Main {
 		List<Estudiante> estudiantes = em.createQuery("select c from Estudiante c").getResultList();
 		estudiantes.forEach(c -> System.out.println(c));
 
+		List<Carrera> carreras = em.createQuery("select c from Carrera c").getResultList();
+		carreras.forEach(c -> System.out.println(c));
+
+		List<Inscripto> inscriptos = em.createQuery("select c from Inscripto c").getResultList();
+		inscriptos.forEach(c -> System.out.println(c));
+
 		// a) dar de alta un estudiante
-		puntoA(em);
+		//puntoA(em);
 
 		// b) matricular un estudiante en una carrera
-		puntoB();
+		//puntoB(em);
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
@@ -68,11 +74,15 @@ public class Main {
 		// em.persist(e2);
 	}
 
-	private static void puntoB() { 
+	private static void puntoB(EntityManager em) { 
+		Estudiante e3=new Estudiante(822,"trotun", "grapis", 22999888 ,22, "fem","3a");
+		em.persist(e3);
 		
 		Carrera c1 = new Carrera("Tudai", 2, "ee");
+		em.persist(c1);
 		
-		Inscripto i1 = new Inscripto(e1.setId(234), "Tudai", 2, false);
+		Inscripto i1 = new Inscripto(e3, c1, 2, false);
+		em.persist(i1);
 	}
 
 	private static void puntoC() {

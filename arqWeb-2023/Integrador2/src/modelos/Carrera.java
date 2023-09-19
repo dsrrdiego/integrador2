@@ -71,4 +71,10 @@ public class Carrera {
 		this.institucion = institucion;
 	}
 
+	@Override
+	public String toString() {
+		return "Carrera [nombre=" + nombre + "]";
+	}
+	
+
 }

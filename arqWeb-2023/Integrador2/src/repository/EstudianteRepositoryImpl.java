@@ -15,6 +15,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	}
 
 	@Override
+	// este devuelve un estudiante por su id que seria el nro de libreta
 	public Estudiante findById(Integer id) {
 		return RepositoryFactory.getEntity_manager().find(Estudiante.class, id);
 	}
@@ -27,6 +28,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
 	@Override
 	public Estudiante save(Estudiante Estudiante) {
+
 		RepositoryFactory.getEntity_manager().getTransaction().begin();
 		if (Estudiante.getId() == null) {
 			RepositoryFactory.getEntity_manager().persist(Estudiante);
@@ -46,8 +48,20 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		RepositoryFactory.getEntity_manager().remove(Estudiante);
 	}
 
-	public List<Estudiante> estudiantesPorGenero(genero) {
-		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM estudiante e where genero = ?", Estudiante.class)
-				.getResultList();
+	// recupera todos los estudiantes en base a su genero 
+	public List<Estudiante> estudiantesPorGenero(genero) { // me falta pasarle el parmetro a la consulta
+		
+		Query sql1= ("SELECT e FROM estudiante e where genero = :sexo", Estudiante.class);
+		sql.setParameter("sexo", genero);
+		RepositoryFactory.getEntity_manager().createQuery(sql1).getResultList();
 	}
+
+	// recuperar un estudiante, en base a su número de libreta universitaria.
+	public List<Estudiante> estudiantesPorLegajo(libreta) { // me falta pasarle el parmetro a la consulta
+		
+		Query sql=("SELECT e FROM estudiante e where nro_libreta = :libreta", Estudiante.class);
+		sql.setParameter("libreta", libreta);
+		RepositoryFactory.getEntity_manager().createQuery(sql).getResultList();
+	}
+
 }

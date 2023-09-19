@@ -97,11 +97,11 @@ public class Main {
 		// em.persist(e2);
 	}
 
-	private static void puntoB(EntityManager em, e1, carrera, '2023') {
+	/*private static void puntoB(EntityManager em, e1, carrera, '2023') {
 
 		Inscripto ins = new Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado); 
 		em.save(ins);
-	}
+	}*/
 
 	
 	private static void puntoB(EntityManager em) { 

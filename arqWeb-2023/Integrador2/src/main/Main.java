@@ -6,17 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-<<<<<<< HEAD
 import repository.RepositoryFactory;
 
 import entity.Estudiante;
 import entity.Carrera;
 import entity.Inscripto;
-=======
-import modelos.Carrera;
-import modelos.Estudiante;
-import modelos.Inscripto;
->>>>>>> manurama
 
 public class Main {
 
@@ -50,8 +44,9 @@ public class Main {
 		System.out.println(j);
 
 		// b) matricular un estudiante en una carrera
-		puntoB(e1, 3, '2023');
-		puntoB(e2, 3, '2023');
+		//puntoB(e1, 3, '2023');
+		//puntoB(e2, 3, '2023');
+		puntoB(em);
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.

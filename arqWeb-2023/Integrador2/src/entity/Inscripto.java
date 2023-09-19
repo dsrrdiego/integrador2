@@ -25,7 +25,6 @@ public class Inscripto {
 	private boolean graduado;
 
 	@Column
-<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Inscripto.java
 	private int anio_graduado;
 
 	/// @JoinColumn(name="")
@@ -35,9 +34,7 @@ public class Inscripto {
 
 	// @ManyToOne
 	// private Lis<Carrera> carreras;
-=======
-	private String fecha;
->>>>>>> manurama:arqWeb-2023/Integrador2/src/modelos/Inscripto.java
+	private String fechaEgreso;
 
 	public Inscripto() {
 		super();

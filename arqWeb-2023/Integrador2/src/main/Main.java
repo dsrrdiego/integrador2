@@ -33,53 +33,53 @@ public class Main {
 
 		// a) dar de alta un estudiante
 		// puntoA(em);
-		RepositoryFactory.getInstance(RepositoryFactory.MYSQL);
+		//RepositoryFactory.getInstance(RepositoryFactory.MYSQL);
 
-		Estudiante e1 = new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		/* Estudiante e1 = new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		Estudiante e = RepositoryFactory.get_repositorio_estudiante().save(e1);
 
 		Estudiante e2 = new Estudiante(2,"manolo","fugo",51,18,"Chaves");
 		Estudiante e = RepositoryFactory.get_repositorio_estudiante().save(e2);
 
 		System.out.println(j);
-
+ */
 		// b) matricular un estudiante en una carrera
 		//puntoB(e1, 3, '2023');
 		//puntoB(e2, 3, '2023');
-		puntoB(em);
+		//puntoB(em);
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
-		puntoC();
+		//puntoC();
 
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
 		int nro_libreta = 123;
-		puntoD(nro_libreta);
+		//puntoD(nro_libreta);
 		
 		
 
 		// e) recuperar todos los estudiantes, en base a su género.
-		puntoE();
+		//puntoE();
 		
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
 		
 
-		puntoF();
+		//puntoF();
 
 		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
 		// de residencia.
 		
 
-		puntoG();
+		//puntoG();
 
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
 		// información de los
 		// inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar
 		// los años de manera cronológica.
-		punto3();
+		//punto3();
 
 		em.getTransaction().commit();
 		em.close();
@@ -88,11 +88,11 @@ public class Main {
 
 	private static void puntoA(EntityManager em) {
 
-		Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
+		//Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		// Estudiante e1=new Estudiante("olfa","croquetis","29555000",33,"fem","3a");
-		Estudiante e1=new Estudiante(456,"trotun", "grapis", 22999888 ,22, "fem","3a");
-		em.persist(e1);
+		//Estudiante e1=new Estudiante(456,"trotun", "grapis", 22999888 ,22, "fem","3a");
+		//em.persist(e1);
 		// Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
 		// em.persist(e2);
 	}
@@ -111,18 +111,18 @@ public class Main {
 		Carrera c1 = new Carrera("Tudai", 2, "ee");
 		em.persist(c1);
 		
-		Inscripto i1 = new Inscripto(e3, c1, 2, false);
+		Inscripto i1 = new Inscripto(e3, c1, 2, false,"re");
 		em.persist(i1);
 	}
 
 	private static void puntoC() {
 
-		return List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
+		//return List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
 	}
 
-	private static void puntoD(nro_libreta) {
+	private static void puntoD() { //nro_libreta
 
-		return RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
+		//return RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
 	}
 
 	private static void puntoE() {

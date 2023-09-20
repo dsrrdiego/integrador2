@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 public class Estudiante {
 	@Id
 	@Column(name = "nro_libreta")
-	private int id;
+	private Integer id;
 
     // Relación con Inscripto
     @OneToMany(mappedBy = "estudiante")
@@ -57,11 +57,11 @@ public class Estudiante {
 	}
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public int setId(int id) {
-		return id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 

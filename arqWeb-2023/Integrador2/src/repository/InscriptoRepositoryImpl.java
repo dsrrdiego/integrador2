@@ -46,7 +46,7 @@ public class InscriptoRepositoryImpl implements InscriptoRepository {
 		RepositoryFactory.getEntity_manager().remove(Inscripto);
 	}
 
-	// F - recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
+	/* // F - recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
 	public List<Estudiante> estudiantesInscriptos() { 
 		
 		Query sql=("SELECT * FROM `inscripto` as ins
@@ -66,5 +66,5 @@ public class InscriptoRepositoryImpl implements InscriptoRepository {
 		sql.setParameter("carrera", carrera);
 		sql.setParameter("ciudad", ciudad);
 		RepositoryFactory.getEntity_manager().createQuery(sql).getResultList();
-	}
+	} */
 }

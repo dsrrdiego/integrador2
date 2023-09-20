@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Carrera {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id_carrera;
+	private Integer id_carrera;
 
     // Relación con Inscripto
     @OneToMany(mappedBy = "carrera")
@@ -40,8 +40,8 @@ public class Carrera {
 		this.institucion = institucion;
 	}
 
-	public int getId_carrera() {
-		return id_carrera;
+	public Integer getId_carrera() {
+		return this.id_carrera;
 	}
 
 	public void setId_carrera(int id_carrera) {

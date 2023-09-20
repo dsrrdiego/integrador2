@@ -16,7 +16,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:exampleDBJPA;create=true"/>
 			 -->
 			<!-- Propiedades de configuracion de JDBC para MySQL / -->
-			 <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/midb"/>
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value=""/>

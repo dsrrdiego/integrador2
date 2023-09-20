@@ -26,18 +26,18 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	}
 
 	@Override
-	public Carrera save(Carrera Carrera) {
+	public Carrera save(Carrera carrera) {
 		RepositoryFactory.getEntity_manager().getTransaction().begin();
-		if (Carrera.getId() == null) {
-			RepositoryFactory.getEntity_manager().persist(Carrera);
+		if (carrera.getId_carrera() == null) {
+			RepositoryFactory.getEntity_manager().persist(carrera);
 			RepositoryFactory.getEntity_manager().getTransaction().commit();
 			RepositoryFactory.cerrar_conexion();
-			return Carrera;
+			return carrera;
 		}
-		Carrera = RepositoryFactory.getEntity_manager().merge(Carrera);
+		carrera = RepositoryFactory.getEntity_manager().merge(carrera);
 		RepositoryFactory.getEntity_manager().getTransaction().commit();
 		RepositoryFactory.cerrar_conexion();
-		return Carrera;
+		return carrera;
 
 	}
 

@@ -27,19 +27,19 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	}
 
 	@Override
-	public Estudiante save(Estudiante Estudiante) {
+	public Estudiante save(Estudiante estudiante) {
 
 		RepositoryFactory.getEntity_manager().getTransaction().begin();
-		if (Estudiante.getId() == null) {
-			RepositoryFactory.getEntity_manager().persist(Estudiante);
+		if (estudiante.getId() == null) {
+			RepositoryFactory.getEntity_manager().persist(estudiante);
 			RepositoryFactory.getEntity_manager().getTransaction().commit();
 			RepositoryFactory.cerrar_conexion();
-			return Estudiante;
+			return estudiante;
 		}
-		Estudiante = RepositoryFactory.getEntity_manager().merge(Estudiante);
+		estudiante = RepositoryFactory.getEntity_manager().merge(estudiante);
 		RepositoryFactory.getEntity_manager().getTransaction().commit();
 		RepositoryFactory.cerrar_conexion();
-		return Estudiante;
+		return estudiante;
 
 	}
 
@@ -48,7 +48,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		RepositoryFactory.getEntity_manager().remove(Estudiante);
 	}
 
-	// recupera todos los estudiantes en base a su genero 
+	/* // recupera todos los estudiantes en base a su genero 
 	public List<Estudiante> estudiantesPorGenero(genero) { // me falta pasarle el parmetro a la consulta
 		
 		Query sql1= ("SELECT e FROM estudiante e where genero = :sexo", Estudiante.class);
@@ -57,11 +57,11 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	}
 
 	// recuperar un estudiante, en base a su número de libreta universitaria.
-	public List<Estudiante> estudiantesPorLegajo(libreta) { // me falta pasarle el parmetro a la consulta
+	public List<Estudiante> estudiantesPorLegajo(nro_libreta) { // me falta pasarle el parmetro a la consulta
 		
 		Query sql=("SELECT e FROM estudiante e where nro_libreta = :libreta", Estudiante.class);
 		sql.setParameter("libreta", libreta);
 		RepositoryFactory.getEntity_manager().createQuery(sql).getResultList();
-	}
+	} */
 
 }

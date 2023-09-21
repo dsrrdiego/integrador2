@@ -6,17 +6,17 @@ import javax.persistence.*;
 public class Inscripto {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private int id;
 
 	@ManyToOne
     @JoinColumn(name = "nro_libreta")
 	private Estudiante estudiante;
-	// // private int nro_libreta;
 
 	@ManyToOne
     @JoinColumn(name = "carrera")
 	private Carrera carrera;
-	// // private int carrera;
 
 	@Column
 	private int antiguedad;
@@ -31,9 +31,9 @@ public class Inscripto {
 		super();
 	}
 
-	public Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado) {
-		// this.nro_libreta =nro_libreta ;
-		// this.carrera = carrera;
+	public Inscripto(Estudiante e, Carrera c, int antiguedad, boolean graduado) {
+		this.estudiante =e ;
+		this.carrera = c;
 		this.antiguedad = antiguedad;
 		this.graduado = graduado;
 	}
@@ -50,9 +50,9 @@ public class Inscripto {
 		this.graduado = graduado;
 	}
 
-	// public int getId(){
-		// return this.nro_libreta;
-	// }
+	public int getId(){
+		return this.estudiante.getId();
+	}
 	/*
 	 * @Override
 	 * public String toString() {

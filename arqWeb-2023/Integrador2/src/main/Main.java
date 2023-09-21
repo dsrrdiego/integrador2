@@ -18,7 +18,6 @@ public class Main {
 	public final static String UnidadDePresistencia="MySql";
 	public static void main(String[] args) {
 
-		// estudiantes.forEach(c -> System.out.println(c));
 		
 		RepositoryFactory.getInstance(UnidadDePresistencia);
 		// a) dar de alta un estudiante
@@ -51,21 +50,24 @@ public class Main {
 		// inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar
 		// los años de manera cronológica.
-		// punto3();
+		punto3();
 
-		puntoAgregarCarreras();
+		// puntoAgregarCarreras();
 
 	}
 	
 	private static void puntoA() {
 		// Estudiante e1 = new Estudiante(1,"una", "unaillino" ,29550561,41,"femenina","1 arroyos");
 		// Estudiante e1 = new Estudiante(2,"dos", "dosillino" ,29550562,42,"masculine","2arroyos");
-		Estudiante e1 = new Estudiante(3,"tres", "tres de los ultimos" ,29550563,43,"femenina","3a");
+		// Estudiante e1 = new Estudiante(3,"tres", "tres de los ultimos" ,29550563,43,"femenina","3a");
+		Estudiante e1 = new Estudiante(4,"cuatro", "cuatro de los ultimos" ,29550564,44,"femenina","4a");
 		RepositoryFactory.get_repositorio_estudiante().save(e1);
 	}
 
 	private static void puntoB() {
-		Inscripto i=new Inscripto(3, 1, 1, false);
+		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(4); //por numero de libreta
+		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(1); 
+		Inscripto i =new Inscripto(e, c, 14, false);
 		RepositoryFactory.get_repositorio_inscripto().save(i);
 
 	}
@@ -92,14 +94,32 @@ public class Main {
 		List<Carrera> c = RepositoryFactory.get_repositorio_carrera().xEstudiantesInscriptos();
 		System.out.println(c);
 	}
-
+	
 	private static void puntoG() {
-	}
-
-	private static void puntoH() {
+		// Recuperar los estudiantes de una determinada carrera, filtrado por ciudad
+		// de residencia.
+		Carrera carrera=RepositoryFactory.get_repositorio_carrera().findById(2);
+		String ciudad="2";
+		List<Estudiante> c = RepositoryFactory.get_repositorio_estudiante().xCarreraYciudad(carrera,ciudad);
+		System.out.println(c);
 	}
 
 	private static void punto3() {
+		
+		// 3) Generar un reporte de las carreras, que para cada carrera incluya
+		// información de los
+		// inscriptos y egresados por año. Se deben ordenar las carreras
+		// alfabéticamente, y presentar
+		// los años de manera cronológica.
+		List<Carrera> carreras =RepositoryFactory.get_repositorio_carrera().findAll();
+		carreras.forEach(c -> {
+			System.out.println("----------------------------------------------------------------");
+			System.out.println(c);
+			// List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().xCarreraYciudad(carrera,ciudad);
+
+		});
+
+		
 	}
 
 	private static void puntoAgregarCarreras() {

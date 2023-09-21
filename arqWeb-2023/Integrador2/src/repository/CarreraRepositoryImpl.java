@@ -55,13 +55,9 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
 
-		// String consulta ="SELECT c FROM Carrera c WHERE c.id_carrera IN (SELECT i.carrera FROM Inscripto i)";
-		// String consulta ="SELECT c FROM Carrera c JOIN c.inscriptoSet i";
-		String consulta ="SELECT c FROM Carrera c JOIN c.inscriptoSet i GROUP BY c HAVING COUNT(i) = 1";
+		// String consulta="SELECT c FROM Carrera c JOIN c.estudiantes e ORDER BY GROUP BY c HAVING COUNT(e) ";
+		 String consulta= "SELECT c FROM Carrera c ORDER BY SIZE(c.estudiantes) ";
 		TypedQuery<Carrera> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
-		// query.setParameter("que", "%");
 		return query.getResultList();
-		// return RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class).getResultList();
-
     }
 }

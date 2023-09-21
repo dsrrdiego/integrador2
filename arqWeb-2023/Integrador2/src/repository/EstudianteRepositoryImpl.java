@@ -1,9 +1,11 @@
 package repository;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
 
+import entity.Carrera;
 import entity.Estudiante;
 
 public class EstudianteRepositoryImpl implements EstudianteRepository {
@@ -55,6 +57,15 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	public void delete(Estudiante Estudiante) {
 		RepositoryFactory.getEntity_manager().remove(Estudiante);
 	}
+
+    public List<Estudiante> xCarreraYciudad(Carrera carrera, String ciudad) {
+		String consulta = "SELECT e FROM Estudiante e JOIN e.carreras c WHERE c = :carr AND e.ciudad_reside LIKE :city";
+		TypedQuery<Estudiante> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Estudiante.class);
+		query.setParameter("carr", carrera);
+		query.setParameter("city", "%"+ciudad+"%");
+		return query.getResultList();
+        // return null;
+    }
 
 
 }

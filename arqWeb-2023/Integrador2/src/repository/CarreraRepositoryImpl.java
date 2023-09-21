@@ -47,6 +47,7 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	}
 
 	@Override
+	// borra una carrera
 	public void delete(Carrera Carrera) {
 		RepositoryFactory.getEntity_manager().remove(Carrera);
 	}
@@ -57,6 +58,21 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 
 		// String consulta="SELECT c FROM Carrera c JOIN c.estudiantes e ORDER BY GROUP BY c HAVING COUNT(e) ";
 		 String consulta= "SELECT c FROM Carrera c ORDER BY SIZE(c.estudiantes) ";
+		TypedQuery<Carrera> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
+		return query.getResultList();
+    }
+
+	/**
+	 * Generar un reporte de las carreras, que para cada carrera incluya información de los 
+	 * inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
+     * los años de manera cronológica
+	 */
+	public List<Carrera> reporteCarreras() {
+
+		String consulta= "SELECT c.nombre as carrera, i.nro_libreta, i.antiguedad as corte, i.graduado, i.anio_graduado, e.apellido, e.nombre FROM `carrera` as c inner join inscripto as i on i.carrera = c.id_carrera
+		inner join estudiante as e on e.nro_libreta = i.nro_libreta
+		ORDER BY c.nombre, i.antiguedad DESC, i.anio_graduado DESC,e.apellido, e.nombre ASC";
+
 		TypedQuery<Carrera> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
 		return query.getResultList();
     }

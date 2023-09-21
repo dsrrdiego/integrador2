@@ -41,9 +41,6 @@ public class Estudiante {
 	@Column(name = "ciudad")
 	private String ciudad_reside;
 
-<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
-	
-=======
 	// @ManyToMany(mappedBy = "inscriptoSet")
 	// private Set<Carrera> carreraSet=new HashSet<>();
 
@@ -55,20 +52,14 @@ public class Estudiante {
     )
     private List<Carrera> carreras;
 
->>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 	public Estudiante() {
 		super();
 	}
 
 	
-<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
-	public Estudiante(Integer id, String nombre, String apellido, Integer nro_doc, Integer edad, String genero, String ciudad_reside) {
-		this.id = id;
-=======
 	public Estudiante(int nro_libreta,String nombre, String apellido, Integer nro_doc, Integer edad, String genero,
 			String ciudad_reside) {
 		this.id=nro_libreta;
->>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nro_doc = nro_doc;
@@ -115,14 +106,9 @@ public class Estudiante {
 		return ciudad_reside;
 	}
 
-
-<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
-	
-=======
 	// public Set<Carrera> getCarreraSet() {
 		// return carreraSet;
 	// }
->>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 
 
 	public void setNombre(String nombre) {
@@ -154,14 +140,9 @@ public class Estudiante {
 		this.ciudad_reside = ciudad_reside;
 	}
 
-
-<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
-	
-=======
 	// public void setCarreraSet(Set<Carrera> carreraSet) {
 		// this.carreraSet = carreraSet;
 	// }
->>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 
 
 	@Override

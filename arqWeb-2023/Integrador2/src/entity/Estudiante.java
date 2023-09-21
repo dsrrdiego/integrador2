@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -40,14 +41,34 @@ public class Estudiante {
 	@Column(name = "ciudad")
 	private String ciudad_reside;
 
+<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
 	
+=======
+	// @ManyToMany(mappedBy = "inscriptoSet")
+	// private Set<Carrera> carreraSet=new HashSet<>();
+
+	@ManyToMany
+    @JoinTable(
+        name = "Inscripto",
+        joinColumns = @JoinColumn(name = "nro_libreta"),
+        inverseJoinColumns = @JoinColumn(name = "carrera")
+    )
+    private List<Carrera> carreras;
+
+>>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 	public Estudiante() {
 		super();
 	}
 
 	
+<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
 	public Estudiante(Integer id, String nombre, String apellido, Integer nro_doc, Integer edad, String genero, String ciudad_reside) {
 		this.id = id;
+=======
+	public Estudiante(int nro_libreta,String nombre, String apellido, Integer nro_doc, Integer edad, String genero,
+			String ciudad_reside) {
+		this.id=nro_libreta;
+>>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nro_doc = nro_doc;
@@ -95,7 +116,13 @@ public class Estudiante {
 	}
 
 
+<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
 	
+=======
+	// public Set<Carrera> getCarreraSet() {
+		// return carreraSet;
+	// }
+>>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 
 
 	public void setNombre(String nombre) {
@@ -128,14 +155,20 @@ public class Estudiante {
 	}
 
 
+<<<<<<< HEAD:arqWeb-2023/Integrador2/src/entity/Estudiante.java
 	
+=======
+	// public void setCarreraSet(Set<Carrera> carreraSet) {
+		// this.carreraSet = carreraSet;
+	// }
+>>>>>>> entregable:arqWeb-2023/Integrador2/src/modelos/Estudiante.java
 
 
 	@Override
 	public String toString() {
-		return "Estudiante [id=" + id + ", nombre=" + nombre + "apellido=" + apellido + ", nro_doc="
-				+ nro_doc
-				+ ", ciudad residente=" + ciudad_reside + "]";
+		return "\nEstudiante [id=" + id + ", nombre= " + nombre + " Apellido= " + apellido + ", nro_doc="
+				+ nro_doc+" Género: "+ genero
+				+ ", ciudad residente= " + ciudad_reside + "]";
 	}
 
 

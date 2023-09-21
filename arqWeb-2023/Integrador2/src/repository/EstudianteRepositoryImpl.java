@@ -1,6 +1,11 @@
 package repository;
 
+import java.util.Collections;
 import java.util.List;
+
+import javax.persistence.TypedQuery;
+
+import entity.Carrera;
 import entity.Estudiante;
 
 public class EstudianteRepositoryImpl implements EstudianteRepository {
@@ -22,15 +27,22 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
 	@Override
 	public List<Estudiante> findAll() {
-		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM estudiante e", Estudiante.class)
-				.getResultList();
+		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM Estudiante e ORDER BY e.id", Estudiante.class).getResultList();
+	}
+
+	// lista los estudiantes por genero
+	public List<Estudiante> xGenero(String g){
+		String consulta = "SELECT e FROM Estudiante e WHERE e.genero LIKE :generoParametro ORDER BY e.apellido, e.nombre";
+		TypedQuery<Estudiante> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Estudiante.class);
+		query.setParameter("generoParametro", "%"+g+"%");
+		return query.getResultList();
 	}
 
 	@Override
 	public Estudiante save(Estudiante estudiante) {
 
 		RepositoryFactory.getEntity_manager().getTransaction().begin();
-		if (estudiante.getId() == null) {
+		if (estudiante.getId() == 0) {
 			RepositoryFactory.getEntity_manager().persist(estudiante);
 			RepositoryFactory.getEntity_manager().getTransaction().commit();
 			RepositoryFactory.cerrar_conexion();
@@ -51,7 +63,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	/* // recupera todos los estudiantes en base a su genero 
 	public List<Estudiante> estudiantesPorGenero(genero) { // me falta pasarle el parmetro a la consulta
 		
-		Query sql1= ("SELECT e FROM estudiante e where genero = :sexo", Estudiante.class);
+		Query sql1= ("SELECT e FROM Estudiante e where genero = :sexo", Estudiante.class);
 		sql.setParameter("sexo", genero);
 		RepositoryFactory.getEntity_manager().createQuery(sql1).getResultList();
 	}
@@ -59,9 +71,19 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	// recuperar un estudiante, en base a su número de libreta universitaria.
 	public List<Estudiante> estudiantesPorLegajo(nro_libreta) { // me falta pasarle el parmetro a la consulta
 		
-		Query sql=("SELECT e FROM estudiante e where nro_libreta = :libreta", Estudiante.class);
+		Query sql=("SELECT e FROM Estudiante e where nro_libreta = :libreta", Estudiante.class);
 		sql.setParameter("libreta", libreta);
 		RepositoryFactory.getEntity_manager().createQuery(sql).getResultList();
 	} */
+
+    public List<Estudiante> xCarreraYciudad(Carrera carrera, String ciudad) {
+		String consulta = "SELECT e FROM Estudiante e JOIN e.carreras c WHERE c = :carr AND e.ciudad_reside LIKE :city";
+		TypedQuery<Estudiante> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Estudiante.class);
+		query.setParameter("carr", carrera);
+		query.setParameter("city", "%"+ciudad+"%");
+		return query.getResultList();
+        // return null;
+    }
+
 
 }

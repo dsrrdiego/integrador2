@@ -1,6 +1,5 @@
 package entity;
 
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +28,13 @@ public class Carrera {
 
 	@Column
 	private String institucion;
+
+
+	// @ManyToMany
+	// private Set<Estudiante> inscriptoSet=new HashSet<>();
+
+	@ManyToMany(mappedBy = "carreras")
+    private List<Estudiante> estudiantes;
 
 	public Carrera() {
 		super();
@@ -74,8 +80,8 @@ public class Carrera {
 
 	@Override
 	public String toString() {
-		return "Carrera [nombre=" + nombre + "]";
+		return "Carrera [id_carrera= " + id_carrera + ", nombre= " + nombre + ", duracion= " + duracion + ", institucion= "
+				+ institucion + "]";
 	}
-	
 
 }

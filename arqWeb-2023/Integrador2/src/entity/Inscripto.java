@@ -6,17 +6,17 @@ import javax.persistence.*;
 public class Inscripto {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
-    @ManyToOne
-    @JoinColumn(name = "nro_libreta_estudiante")
-    private Estudiante estudiante;
+	private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_carrera")
-    private Carrera carrera;
+	@ManyToOne
+    @JoinColumn(name = "nro_libreta")
+	private Estudiante estudiante;
+
+	@ManyToOne
+    @JoinColumn(name = "carrera")
+	private Carrera carrera;
 
 	@Column
 	private int antiguedad;
@@ -25,46 +25,17 @@ public class Inscripto {
 	private boolean graduado;
 
 	@Column
-	private String fechaEgreso;
+	private String fecha;
 
 	public Inscripto() {
 		super();
 	}
 
-	public Inscripto(Estudiante estudiante, Carrera carrera, int antiguedad, boolean graduado, String fechaEgreso) {
-		this.estudiante = estudiante;
-		this.carrera = carrera;
+	public Inscripto(Estudiante e, Carrera c, int antiguedad, boolean graduado) {
+		this.estudiante =e ;
+		this.carrera = c;
 		this.antiguedad = antiguedad;
 		this.graduado = graduado;
-	}
-
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Estudiante getEstudiante() {
-		return estudiante;
-	}
-
-	public void setEstudiante(Estudiante estudiante) {
-		this.estudiante = estudiante;
-	}
-
-	public Carrera getCarrera() {
-		return carrera;
-	}
-
-	public void setCarrera(Carrera carrera) {
-		this.carrera = carrera;
-	}
-
-	public int getAntiguedad() {
-		return antiguedad;
 	}
 
 	public void setAntiguedad(int antiguedad) {
@@ -79,19 +50,16 @@ public class Inscripto {
 		this.graduado = graduado;
 	}
 
-	public String getFechaEgreso() {
-		return fechaEgreso;
+	public int getId(){
+		return this.estudiante.getId();
 	}
-
-	public void setFechaEgreso(String fechaEgreso) {
-		this.fechaEgreso = fechaEgreso;
-	}
-
-	@Override
-	public String toString() {
-		return "Inscripto [estudiante=" + estudiante + ", carrera=" + carrera + ", graduado=" + graduado + "]";
-	}
-	
-
+	/*
+	 * @Override
+	 * public String toString() {
+	 * return "Inscripto [nro_libreta_estudiante=" + nro_libreta_estudiante +
+	 * ", id_carrera=" + id_carrera
+	 * + ", antiguedad=" + antiguedad + ", graduado=" + graduado + "]";
+	 * }
+	 */
 
 }

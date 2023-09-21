@@ -28,7 +28,7 @@ public class InscriptoRepositoryImpl implements InscriptoRepository {
 	@Override
 	public Inscripto save(Inscripto Inscripto) {
 		RepositoryFactory.getEntity_manager().getTransaction().begin();
-		if (Inscripto.getId() == null) {
+		if (Inscripto.getId() == 0) {
 			RepositoryFactory.getEntity_manager().persist(Inscripto);
 			RepositoryFactory.getEntity_manager().getTransaction().commit();
 			RepositoryFactory.cerrar_conexion();

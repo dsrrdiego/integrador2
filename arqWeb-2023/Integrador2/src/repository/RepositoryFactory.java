@@ -18,7 +18,7 @@ public class RepositoryFactory {
 	public static RepositoryFactory getInstance(String unidad_persistencia) {
         
 		if (instance == null) {
-			entity_manager_factory = Persistence.createEntityManagerFactory("Integrador2");
+			entity_manager_factory = Persistence.createEntityManagerFactory(unidad_persistencia);
 			entity_manager = entity_manager_factory.createEntityManager();
 			instance = new RepositoryFactory();
 			return instance;

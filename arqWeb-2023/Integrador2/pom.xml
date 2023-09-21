@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
-		<!-- <dependency>
+		 <dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<version>10.16.1.1</version>
@@ -17,7 +17,7 @@
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derbytools</artifactId>
 			<version>10.16.1.1</version>
-		</dependency>-->
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>

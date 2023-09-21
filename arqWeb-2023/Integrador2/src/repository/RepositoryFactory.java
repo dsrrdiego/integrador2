@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 public class RepositoryFactory {
 
 	public static final String DERBY = "Derby";
-	public static final String MYSQL = "MySQL";
+	public static final String MYSQL = "MYSQL";
 	private static RepositoryFactory instance = null;
 	private static EntityManagerFactory entity_manager_factory;
 	private static EntityManager entity_manager;
@@ -18,7 +18,7 @@ public class RepositoryFactory {
 	public static RepositoryFactory getInstance(String unidad_persistencia) {
         
 		if (instance == null) {
-			entity_manager_factory = Persistence.createEntityManagerFactory(unidad_persistencia);
+			entity_manager_factory = Persistence.createEntityManagerFactory("Integrador2");
 			entity_manager = entity_manager_factory.createEntityManager();
 			instance = new RepositoryFactory();
 			return instance;

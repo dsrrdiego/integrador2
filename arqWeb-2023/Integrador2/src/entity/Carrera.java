@@ -71,4 +71,10 @@ public class Carrera {
 		this.institucion = institucion;
 	}
 
+	@Override
+	public String toString() {
+		return "\nCarrera [id_carrera= " + id_carrera + ", nombre= " + nombre + ", duracion= " + duracion + ", institucion= "
+				+ institucion + "]";
+	}
+
 }

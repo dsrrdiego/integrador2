@@ -14,16 +14,10 @@ import repository.RepositoryFactory;
 // import entity.Estudiante;
 
 public class Main {
-	public final static String UnidadDePresistencia="Integrador2";
+	// public final static String UnidadDePresistencia="Derby";
+	public final static String UnidadDePresistencia="MySql";
 	public static void main(String[] args) {
 
-		// EntityManagerFactory emf = Persistence.createEntityManagerFactory("Integrador2");
-		// EntityManager em = emf.createEntityManager();
-		// em.getTransaction().begin();
-
-		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
-		// em.persist(e1);
-		// List<Estudiante> estudiantes = em.createQuery("select c from Estudiante c").getResultList();
 		// estudiantes.forEach(c -> System.out.println(c));
 		
 		RepositoryFactory.getInstance(UnidadDePresistencia);
@@ -36,13 +30,13 @@ public class Main {
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
-		puntoC();
+		// puntoC();
 
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
-		// puntoD(1);
+		// puntoD(2);
 
 		// e) recuperar todos los estudiantes, en base a su género.
-		// puntoE("masc");
+		// puntoE("fem");
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
@@ -59,7 +53,7 @@ public class Main {
 		// los años de manera cronológica.
 		// punto3();
 
-		// puntoAgregarCarreras();
+		puntoAgregarCarreras();
 
 		// em.getTransaction().commit();
 		// em.close();
@@ -67,13 +61,12 @@ public class Main {
 	}
 	
 	private static void puntoA() {
-		Estudiante e1 = new Estudiante("ultimo", "de los ultimos" ,29550568,41,"masculino","3a");
+		Estudiante e1 = new Estudiante(3,"tres", "tres de los ultimos" ,29550563,43,"femenina","4a");
 		RepositoryFactory.get_repositorio_estudiante().save(e1);
 	}
 
 	private static void puntoB() {
-		// Inscripto i=new Inscripto(2, 0, 2, true);
-		Inscripto i=new Inscripto(3, 1, 3, false);
+		Inscripto i=new Inscripto(3, 1, 1, false);
 		RepositoryFactory.get_repositorio_inscripto().save(i);
 
 	}
@@ -87,18 +80,18 @@ public class Main {
 	private static void puntoD(int nro_libreta) {
 		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
 		System.out.println(e);
-		
-		
-		
 	}
 	
 	private static void puntoE(String g) {
 		List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().xGenero(g);
 		System.out.println(estudiantes);
-
 	}
-
+	
 	private static void puntoF() {
+		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
+		// de inscriptos.
+		List<Carrera> c = RepositoryFactory.get_repositorio_carrera().xEstudiantesInscriptos();
+		System.out.println(c);
 	}
 
 	private static void puntoG() {
@@ -111,11 +104,10 @@ public class Main {
 	}
 
 	private static void puntoAgregarCarreras() {
-		RepositoryFactory.getInstance(UnidadDePresistencia);
 		// Carrera c=new Carrera("Periodismo", 5,"UNICEN");
-		// Carrera c=new Carrera("Arquitectura Web", 1,"UNICEN");
-		Carrera c=new Carrera("Odontologia", 3,"UBA");
-		RepositoryFactory.get_repositorio_carrera().save(c);
+		// Carrera c =new Carrera("Arquitectura Web", 1,"UNICEN");
+		// Carrera c =new Carrera("Odontologia", 3,"UBA");
+		// RepositoryFactory.get_repositorio_carrera().save(c);
 		}
 
 }

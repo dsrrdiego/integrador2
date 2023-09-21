@@ -45,8 +45,9 @@ public class Estudiante {
 	}
 
 	
-	public Estudiante(String nombre, String apellido, Integer nro_doc, Integer edad, String genero,
+	public Estudiante(int nro_libreta,String nombre, String apellido, Integer nro_doc, Integer edad, String genero,
 			String ciudad_reside) {
+		this.id=nro_libreta;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nro_doc = nro_doc;

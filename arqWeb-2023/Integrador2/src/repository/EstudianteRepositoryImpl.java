@@ -25,10 +25,10 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
 	@Override
 	public List<Estudiante> findAll() {
-		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM Estudiante e", Estudiante.class).getResultList();
+		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM Estudiante e ORDER BY e.id", Estudiante.class).getResultList();
 	}
 	public List<Estudiante> xGenero(String g){
-		String consulta = "SELECT e FROM Estudiante e WHERE e.genero = :generoParametro ORDER BY e.apellido, e.nombre";
+		String consulta = "SELECT e FROM Estudiante e WHERE e.genero LIKE :generoParametro ORDER BY e.apellido, e.nombre";
 		TypedQuery<Estudiante> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Estudiante.class);
 		query.setParameter("generoParametro", "%"+g+"%");
 		return query.getResultList();
@@ -56,20 +56,5 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		RepositoryFactory.getEntity_manager().remove(Estudiante);
 	}
 
-	/* // recupera todos los estudiantes en base a su genero 
-	public List<Estudiante> estudiantesPorGenero(genero) { // me falta pasarle el parmetro a la consulta
-		
-		Query sql1= ("SELECT e FROM estudiante e where genero = :sexo", Estudiante.class);
-		sql.setParameter("sexo", genero);
-		RepositoryFactory.getEntity_manager().createQuery(sql1).getResultList();
-	}
-
-	// recuperar un estudiante, en base a su número de libreta universitaria.
-	public List<Estudiante> estudiantesPorLegajo(nro_libreta) { // me falta pasarle el parmetro a la consulta
-		
-		Query sql=("SELECT e FROM estudiante e where nro_libreta = :libreta", Estudiante.class);
-		sql.setParameter("libreta", libreta);
-		RepositoryFactory.getEntity_manager().createQuery(sql).getResultList();
-	} */
 
 }

@@ -1,7 +1,11 @@
 package repository;
 
 import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import entity.Carrera;
+import entity.Estudiante;
 
 public class CarreraRepositoryImpl implements CarreraRepository {
 
@@ -21,9 +25,10 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 
 	@Override
 	public List<Carrera> findAll() {
-		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM Carrera e", Carrera.class)
-				.getResultList();
+		return RepositoryFactory.getEntity_manager().createQuery("SELECT e FROM Carrera e", Carrera.class).getResultList();
 	}
+
+
 
 	@Override
 	public Carrera save(Carrera carrera) {
@@ -45,4 +50,18 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	public void delete(Carrera Carrera) {
 		RepositoryFactory.getEntity_manager().remove(Carrera);
 	}
+
+    public List<Carrera> xEstudiantesInscriptos() {
+		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
+		// de inscriptos.
+
+		// String consulta ="SELECT c FROM Carrera c WHERE c.id_carrera IN (SELECT i.carrera FROM Inscripto i)";
+		// String consulta ="SELECT c FROM Carrera c JOIN c.inscriptoSet i";
+		String consulta ="SELECT c FROM Carrera c JOIN c.inscriptoSet i GROUP BY c HAVING COUNT(i) = 1";
+		TypedQuery<Carrera> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
+		// query.setParameter("que", "%");
+		return query.getResultList();
+		// return RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class).getResultList();
+
+    }
 }

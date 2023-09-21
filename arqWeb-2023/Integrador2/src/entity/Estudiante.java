@@ -1,4 +1,4 @@
-package modelos;
+package entity;
 
 import java.util.HashSet;
 import java.util.List;
@@ -133,8 +133,8 @@ public class Estudiante {
 
 	@Override
 	public String toString() {
-		return "Estudiante [id=" + id + ", nombre=" + nombre + "apellido=" + apellido + ", nro_doc="
-				+ nro_doc
-				+ ", ciudad residente=" + ciudad_reside + "]";
+		return "\nEstudiante [id=" + id + ", nombre= " + nombre + " Apellido= " + apellido + ", nro_doc="
+				+ nro_doc+" Género: "+ genero
+				+ ", ciudad residente= " + ciudad_reside + "]";
 	}
 }

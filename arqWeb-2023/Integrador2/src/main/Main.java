@@ -6,36 +6,43 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import modelos.Estudiante;
+import entity.Carrera;
+import entity.Estudiante;
+import entity.Inscripto;
+import repository.RepositoryFactory;
+
+// import entity.Estudiante;
 
 public class Main {
-
+	public final static String UnidadDePresistencia="Integrador2";
 	public static void main(String[] args) {
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Integrador2");
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
+		// EntityManagerFactory emf = Persistence.createEntityManagerFactory("Integrador2");
+		// EntityManager em = emf.createEntityManager();
+		// em.getTransaction().begin();
 
 		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
 		// em.persist(e1);
-		List<Estudiante> estudiantes = em.createQuery("select c from Estudiante c").getResultList();
-		estudiantes.forEach(c -> System.out.println(c));
-
+		// List<Estudiante> estudiantes = em.createQuery("select c from Estudiante c").getResultList();
+		// estudiantes.forEach(c -> System.out.println(c));
+		
+		RepositoryFactory.getInstance(UnidadDePresistencia);
 		// a) dar de alta un estudiante
-		// puntoA(em);
+		// puntoA();
+		//No es autoincremental porque el Id es el numero de libreta
 
 		// b) matricular un estudiante en una carrera
-		puntoB();
+		// puntoB();
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
 		puntoC();
 
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
-		puntoD();
+		// puntoD(1);
 
 		// e) recuperar todos los estudiantes, en base a su género.
-		puntoE();
+		// puntoE("masc");
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
@@ -50,32 +57,45 @@ public class Main {
 		// inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar
 		// los años de manera cronológica.
-		punto3();
+		// punto3();
 
-		em.getTransaction().commit();
-		em.close();
-		emf.close();
+		// puntoAgregarCarreras();
+
+		// em.getTransaction().commit();
+		// em.close();
+		// emf.close();
 	}
-
-	private static void puntoA(EntityManager em) {
-		// Estudiante e1=new Estudiante(1,"pepe","arr",2951,11,"3arroyos1");
-		// Estudiante e1=new Estudiante("olfa","croquetis","29555000",33,"fem","3a");
-		Estudiante e1=new Estudiante("trotun", "grapis", 22999888 ,22, "fem","3a");
-		em.persist(e1);
-		// Estudiante e2=new Estudiante(2,"MANU","arr",2971,11,"3arroyos1");
-		// em.persist(e2);
+	
+	private static void puntoA() {
+		Estudiante e1 = new Estudiante("ultimo", "de los ultimos" ,29550568,41,"masculino","3a");
+		RepositoryFactory.get_repositorio_estudiante().save(e1);
 	}
 
 	private static void puntoB() {
+		// Inscripto i=new Inscripto(2, 0, 2, true);
+		Inscripto i=new Inscripto(3, 1, 3, false);
+		RepositoryFactory.get_repositorio_inscripto().save(i);
+
 	}
 
 	private static void puntoC() {
+		List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
+		System.out.println(estudiantes);
+		
 	}
-
-	private static void puntoD() {
+	
+	private static void puntoD(int nro_libreta) {
+		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(nro_libreta);
+		System.out.println(e);
+		
+		
+		
 	}
+	
+	private static void puntoE(String g) {
+		List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().xGenero(g);
+		System.out.println(estudiantes);
 
-	private static void puntoE() {
 	}
 
 	private static void puntoF() {
@@ -89,5 +109,13 @@ public class Main {
 
 	private static void punto3() {
 	}
+
+	private static void puntoAgregarCarreras() {
+		RepositoryFactory.getInstance(UnidadDePresistencia);
+		// Carrera c=new Carrera("Periodismo", 5,"UNICEN");
+		// Carrera c=new Carrera("Arquitectura Web", 1,"UNICEN");
+		Carrera c=new Carrera("Odontologia", 3,"UBA");
+		RepositoryFactory.get_repositorio_carrera().save(c);
+		}
 
 }

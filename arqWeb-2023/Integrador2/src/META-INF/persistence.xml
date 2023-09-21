@@ -6,7 +6,9 @@
 	<persistence-unit name="Integrador2">		
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>main.modelos.Estudiante</class>
+		<class>main.entity.Estudiante</class>
+		<class>main.entity.Carrera</class>
+		<class>main.entity.Inscripto</class>
 		
 		<properties>
 			<!-- Propiedades de configuracion de JDBC para Derby /-->

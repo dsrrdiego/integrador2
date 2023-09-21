@@ -1,4 +1,4 @@
-package modelos;
+package entity;
 
 import javax.persistence.*;
 
@@ -41,6 +41,10 @@ public class Inscripto {
 
 	public void setGraduado(boolean graduado) {
 		this.graduado = graduado;
+	}
+
+	public int getId(){
+		return this.nro_libreta;
 	}
 	/*
 	 * @Override

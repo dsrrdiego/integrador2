@@ -26,8 +26,11 @@ public class Carrera {
 	private String institucion;
 
 
-	@ManyToMany
-	private Set<Estudiante> inscriptoSet=new HashSet<>();
+	// @ManyToMany
+	// private Set<Estudiante> inscriptoSet=new HashSet<>();
+
+	@ManyToMany(mappedBy = "carreras")
+    private List<Estudiante> estudiantes;
 
 	public Carrera() {
 		super();

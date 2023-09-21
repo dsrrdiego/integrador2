@@ -40,11 +40,11 @@ public class Main {
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
-		puntoF();
+		// puntoF();
 
 		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
 		// de residencia.
-		puntoG();
+		// puntoG();
 
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
 		// información de los
@@ -55,13 +55,12 @@ public class Main {
 
 		puntoAgregarCarreras();
 
-		// em.getTransaction().commit();
-		// em.close();
-		// emf.close();
 	}
 	
 	private static void puntoA() {
-		Estudiante e1 = new Estudiante(3,"tres", "tres de los ultimos" ,29550563,43,"femenina","4a");
+		// Estudiante e1 = new Estudiante(1,"una", "unaillino" ,29550561,41,"femenina","1 arroyos");
+		// Estudiante e1 = new Estudiante(2,"dos", "dosillino" ,29550562,42,"masculine","2arroyos");
+		Estudiante e1 = new Estudiante(3,"tres", "tres de los ultimos" ,29550563,43,"femenina","3a");
 		RepositoryFactory.get_repositorio_estudiante().save(e1);
 	}
 
@@ -104,10 +103,10 @@ public class Main {
 	}
 
 	private static void puntoAgregarCarreras() {
-		// Carrera c=new Carrera("Periodismo", 5,"UNICEN");
+		Carrera c=new Carrera("Periodismo", 5,"UNICEN");
 		// Carrera c =new Carrera("Arquitectura Web", 1,"UNICEN");
 		// Carrera c =new Carrera("Odontologia", 3,"UBA");
-		// RepositoryFactory.get_repositorio_carrera().save(c);
+		RepositoryFactory.get_repositorio_carrera().save(c);
 		}
 
 }

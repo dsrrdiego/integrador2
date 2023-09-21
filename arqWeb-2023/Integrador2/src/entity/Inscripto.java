@@ -6,10 +6,17 @@ import javax.persistence.*;
 public class Inscripto {
 
 	@Id
-	private int nro_libreta;
+	private int id;
 
-	@Column
-	private int carrera;
+	@ManyToOne
+    @JoinColumn(name = "nro_libreta")
+	private Estudiante estudiante;
+	// // private int nro_libreta;
+
+	@ManyToOne
+    @JoinColumn(name = "carrera")
+	private Carrera carrera;
+	// // private int carrera;
 
 	@Column
 	private int antiguedad;
@@ -25,8 +32,8 @@ public class Inscripto {
 	}
 
 	public Inscripto(int nro_libreta, int carrera, int antiguedad, boolean graduado) {
-		this.nro_libreta =nro_libreta ;
-		this.carrera = carrera;
+		// this.nro_libreta =nro_libreta ;
+		// this.carrera = carrera;
 		this.antiguedad = antiguedad;
 		this.graduado = graduado;
 	}
@@ -43,9 +50,9 @@ public class Inscripto {
 		this.graduado = graduado;
 	}
 
-	public int getId(){
-		return this.nro_libreta;
-	}
+	// public int getId(){
+		// return this.nro_libreta;
+	// }
 	/*
 	 * @Override
 	 * public String toString() {

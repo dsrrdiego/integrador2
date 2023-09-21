@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -37,8 +38,16 @@ public class Estudiante {
 	@Column(name = "ciudad")
 	private String ciudad_reside;
 
-	@ManyToMany(mappedBy = "inscriptoSet")
-	private Set<Carrera> carreraSet=new HashSet<>();
+	// @ManyToMany(mappedBy = "inscriptoSet")
+	// private Set<Carrera> carreraSet=new HashSet<>();
+
+	@ManyToMany
+    @JoinTable(
+        name = "Inscripto",
+        joinColumns = @JoinColumn(name = "nro_libreta"),
+        inverseJoinColumns = @JoinColumn(name = "carrera")
+    )
+    private List<Carrera> carreras;
 
 	public Estudiante() {
 		super();
@@ -92,9 +101,9 @@ public class Estudiante {
 	}
 
 
-	public Set<Carrera> getCarreraSet() {
-		return carreraSet;
-	}
+	// public Set<Carrera> getCarreraSet() {
+		// return carreraSet;
+	// }
 
 
 	public void setNombre(String nombre) {
@@ -127,9 +136,9 @@ public class Estudiante {
 	}
 
 
-	public void setCarreraSet(Set<Carrera> carreraSet) {
-		this.carreraSet = carreraSet;
-	}
+	// public void setCarreraSet(Set<Carrera> carreraSet) {
+		// this.carreraSet = carreraSet;
+	// }
 
 
 	@Override

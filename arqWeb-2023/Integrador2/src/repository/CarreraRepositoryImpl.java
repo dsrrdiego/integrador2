@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
+import dtos.EstudianteCarreraDTO;
 import entity.Carrera;
 import entity.Estudiante;
+import entity.Inscripto;
 
 public class CarreraRepositoryImpl implements CarreraRepository {
 
@@ -67,13 +69,13 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	 * inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
      * los años de manera cronológica
 	 */
-	public List<Carrera> reporteCarreras() {
-
-		String consulta= "SELECT c.nombre as carrera, i.nro_libreta, i.antiguedad as corte, i.graduado, i.anio_graduado, e.apellido, e.nombre FROM `carrera` as c inner join inscripto as i on i.carrera = c.id_carrera
-		inner join estudiante as e on e.nro_libreta = i.nro_libreta
-		ORDER BY c.nombre, i.antiguedad DESC, i.anio_graduado DESC,e.apellido, e.nombre ASC";
-
-		TypedQuery<Carrera> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
+	public List<EstudianteCarreraDTO> reporte() {
+		// String consulta= "SELECT c.nombre as carrera, i.nro_libreta, i.antiguedad as corte, i.graduado, i.anio_graduado, e.apellido, e.nombre FROM `carrera` as c inner join inscripto as i on i.carrera = c.id_carrera inner join estudiante as e on e.nro_libreta = i.nro_libreta ORDER BY c.nombre, i.antiguedad DESC, i.anio_graduado DESC,e.apellido, e.nombre ASC";
+		// String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c ";
+		// String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c ORDER BY c.nombre, i.fecha";
+		String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i,i.fecha as f) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c ORDER BY c.nombre, i.fecha";
+		TypedQuery<EstudianteCarreraDTO> query = RepositoryFactory.getEntity_manager().createQuery(consulta, EstudianteCarreraDTO.class);
 		return query.getResultList();
     }
+
 }

@@ -26,9 +26,17 @@ public class Inscripto {
 
 	@Column
 	private String fecha;
+	
+	@Column
+	private String fechaEgreso;
+
 
 	public Inscripto() {
 		super();
+	}
+
+	public String getFechaEgreso() {
+		return fechaEgreso;
 	}
 
 	public Inscripto(Estudiante e, Carrera c, int antiguedad, boolean graduado) {
@@ -53,13 +61,15 @@ public class Inscripto {
 	public int getId(){
 		return this.estudiante.getId();
 	}
-	/*
-	 * @Override
-	 * public String toString() {
-	 * return "Inscripto [nro_libreta_estudiante=" + nro_libreta_estudiante +
-	 * ", id_carrera=" + id_carrera
-	 * + ", antiguedad=" + antiguedad + ", graduado=" + graduado + "]";
-	 * }
-	 */
+
+	@Override
+	public String toString() {
+		return "Inscripto [id=" + id + ", estudiante=" + estudiante + ", carrera=" + carrera + ", antiguedad="
+				+ antiguedad + ", graduado=" + graduado + ", fecha=" + fecha + "]";
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
 
 }

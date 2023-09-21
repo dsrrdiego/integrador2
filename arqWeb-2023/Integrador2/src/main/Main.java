@@ -6,18 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-<<<<<<< HEAD
-import repository.RepositoryFactory;
-
-import entity.Estudiante;
-import entity.Carrera;
-import entity.Inscripto;
-=======
+import dtos.EstudianteCarreraDTO;
 import entity.Carrera;
 import entity.Estudiante;
 import entity.Inscripto;
 import repository.RepositoryFactory;
->>>>>>> entregable
 
 // import entity.Estudiante;
 
@@ -25,27 +18,6 @@ public class Main {
 	// public final static String UnidadDePresistencia="Derby";
 	public final static String UnidadDePresistencia="MySql";
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		
-		
-		RepositoryFactory.getInstance(RepositoryFactory.MYSQL);
-		
-		 
-		Estudiante e3=new Estudiante(892,"trotun", "grapis", 22999888 ,22, "fem","3a");
-		Estudiante e = RepositoryFactory.get_repositorio_estudiante().save(e3);
-		
-		
-		Carrera c1 = new Carrera("Tudai", 2, "ee");
-		
-		
-		Inscripto i1 = new Inscripto(e3, c1, 2, false,"re");
-		
-
-		System.out.println(e3);
-
-		
-	}
-=======
 
 		
 		RepositoryFactory.getInstance(UnidadDePresistencia);
@@ -136,18 +108,27 @@ public class Main {
 	private static void punto3() {
 		
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
-		// información de los
-		// inscriptos y egresados por año. Se deben ordenar las carreras
-		// alfabéticamente, y presentar
-		// los años de manera cronológica.
-		List<Carrera> carreras =RepositoryFactory.get_repositorio_carrera().findAll();
-		carreras.forEach(c -> {
-			System.out.println("----------------------------------------------------------------");
-			System.out.println(c);
-			// List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().xCarreraYciudad(carrera,ciudad);
+		// información de los inscriptos y egresados por año. Se deben ordenar las carreras
+		// alfabéticamente, y presentar los años de manera cronológica.
 
-		});
+		// List<Carrera> carreras =RepositoryFactory.get_repositorio_carrera().findAll();
+		// carreras.forEach(c -> {
+		// 	System.out.println("----------------------------------------------------------------");
+		// 	System.out.println(c);
+		// 	// List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().xCarreraYciudad(carrera,ciudad);
+		// });
 
+		List<EstudianteCarreraDTO> carreras =RepositoryFactory.get_repositorio_carrera().reporte();
+		System.out.println(carreras);
+
+		// List<Object[]> carreras =RepositoryFactory.get_repositorio_carrera().reporte2();
+		// for (Object[] result : carreras) {
+		// 	Carrera carrera = (Carrera) result[0];
+		// 	Estudiante estudiante = (Estudiante) result[1];
+		
+		// 	System.out.println("Estudiante: " + estudiante);
+		// 	System.out.println("Curso: " + carrera);
+		// }
 		
 	}
 
@@ -158,5 +139,4 @@ public class Main {
 		RepositoryFactory.get_repositorio_carrera().save(c);
 		}
 
->>>>>>> entregable
 }

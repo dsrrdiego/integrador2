@@ -111,24 +111,10 @@ public class Main {
 		// información de los inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar los años de manera cronológica.
 
-		// List<Carrera> carreras =RepositoryFactory.get_repositorio_carrera().findAll();
-		// carreras.forEach(c -> {
-		// 	System.out.println("----------------------------------------------------------------");
-		// 	System.out.println(c);
-		// 	// List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().xCarreraYciudad(carrera,ciudad);
-		// });
 
 		List<EstudianteCarreraDTO> carreras =RepositoryFactory.get_repositorio_carrera().reporte();
+		carreras.sort(null);
 		System.out.println(carreras);
-
-		// List<Object[]> carreras =RepositoryFactory.get_repositorio_carrera().reporte2();
-		// for (Object[] result : carreras) {
-		// 	Carrera carrera = (Carrera) result[0];
-		// 	Estudiante estudiante = (Estudiante) result[1];
-		
-		// 	System.out.println("Estudiante: " + estudiante);
-		// 	System.out.println("Curso: " + carrera);
-		// }
 		
 	}
 

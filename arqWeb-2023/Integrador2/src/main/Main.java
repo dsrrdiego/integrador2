@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -113,7 +114,11 @@ public class Main {
 
 
 		List<EstudianteCarreraDTO> carreras =RepositoryFactory.get_repositorio_carrera().reporte();
-		carreras.sort(null);
+		// carreras.sort(null);
+		carreras.sort(Comparator
+		.comparing(EstudianteCarreraDTO::getNombreCarrera) // Orden alfabético por nombre
+		.thenComparing(EstudianteCarreraDTO::getFech) // Orden creciente por año de nacimiento
+	);
 		System.out.println(carreras);
 		
 	}

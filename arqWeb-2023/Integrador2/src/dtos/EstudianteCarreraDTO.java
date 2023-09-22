@@ -12,22 +12,32 @@ public class EstudianteCarreraDTO implements Comparable{
     public EstudianteCarreraDTO() {
         super();
     }
-
-    public EstudianteCarreraDTO(Carrera carrera,Estudiante estudiante, Inscripto inscripto) {
+    private String fech;
+    public EstudianteCarreraDTO(Carrera carrera,Estudiante estudiante, Inscripto inscripto, String fech) {
         this.estudiante = estudiante;
         this.carrera = carrera;
         this.inscripto= inscripto;
+        this.fech=fech;
     }
 
     @Override
     public String toString() {
-        return "\n"+carrera.getNombre() + " Año ingrerso: "+inscripto.getFecha()+" "+estudiante.getNombre()+" "+estudiante.getApellido()+" Egreso en: "+ inscripto.getFechaEgreso()    + "]";
+        String carrera = String.format("%1$-20s", this.carrera.getNombre());
+
+        String accionSinFormato="Ingresó ";
+        if (!this.inscripto.getFecha().equals(this.fech)) accionSinFormato="EGRESÓ";
+
+        String fechaEgres=" En curso";
+        if (this.inscripto.getFechaEgreso()!=null) fechaEgres=" Egresó en: "+this.inscripto.getFechaEgreso();
+        String accion = String.format("%1$-10s", accionSinFormato);
+
+        String nombre=String.format("%1$-30s", (this.estudiante.getNombre()+"~"+this.estudiante.getApellido()));
+        return "\nFecha: "+this.fech+" "+carrera + accion+" Nombre: "+nombre+"|"+fechaEgres+ "]";
     }
 
     @Override
     public int compareTo(Object arg0) {
         EstudianteCarreraDTO e=(EstudianteCarreraDTO) arg0;
-        // return carrera.getNombre().compareTo(e.getNombreCarrera());
         return inscripto.getFecha().compareTo(e.getFechaCarrera());
     }
 
@@ -36,6 +46,9 @@ public class EstudianteCarreraDTO implements Comparable{
     }
     public String getFechaCarrera(){
         return this.inscripto.getFecha();
+    }
+    public String getFech(){
+        return this.fech;
     }
 
     

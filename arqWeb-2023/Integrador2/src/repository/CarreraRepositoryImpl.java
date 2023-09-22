@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -70,10 +71,19 @@ public class CarreraRepositoryImpl implements CarreraRepository {
      * los años de manera cronológica
 	 */
 	public List<EstudianteCarreraDTO> reporte() {
-		String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c ORDER BY c.nombre, i.fecha";
-		
+		String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, i.fecha as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c ORDER BY c.nombre, i.fecha";
 		TypedQuery<EstudianteCarreraDTO> query = RepositoryFactory.getEntity_manager().createQuery(consulta, EstudianteCarreraDTO.class);
-		return query.getResultList();
+		List<EstudianteCarreraDTO> ingresos=query.getResultList();
+		
+		consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, i.fechaEgreso as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c WHERE i.fechaEgreso IS NOT NULL ";
+		query = RepositoryFactory.getEntity_manager().createQuery(consulta, EstudianteCarreraDTO.class);
+		List<EstudianteCarreraDTO> egrersos=query.getResultList();
+		
+		List<EstudianteCarreraDTO> resultados = new ArrayList<>();
+		resultados.addAll(ingresos);
+		resultados.addAll(egrersos);
+		
+		return resultados;
     }
 
 }

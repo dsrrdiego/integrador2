@@ -23,15 +23,18 @@ public class Main {
 		
 		RepositoryFactory.getInstance(UnidadDePresistencia);
 		// a) dar de alta un estudiante
-		// puntoA();
+		puntoA();
 		//No es autoincremental porque el Id es el numero de libreta
 
 		// b) matricular un estudiante en una carrera
 		// puntoB();
 
+		//b2) ingresar fecha de egreso a tal aclumno tal carrera
+		// puntoB2();
 		// c) recuperar todos los estudiantes, y especificar algún criterio de
 		// ordenamiento simple.
 		// puntoC();
+
 
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
 		// puntoD(2);
@@ -52,28 +55,35 @@ public class Main {
 		// inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar
 		// los años de manera cronológica.
-		punto3();
+		// punto3();
 
 		// puntoAgregarCarreras();
 
 	}
 	
+	
 	private static void puntoA() {
-		// Estudiante e1 = new Estudiante(1,"una", "unaillino" ,29550561,41,"femenina","1 arroyos");
+		// Estudiante e1 = new Estudiante(1,"una", "uniliano" ,29550561,41,"femenina","1 arroyos");
 		// Estudiante e1 = new Estudiante(2,"dos", "dosillino" ,29550562,42,"masculine","2arroyos");
 		// Estudiante e1 = new Estudiante(3,"tres", "tres de los ultimos" ,29550563,43,"femenina","3a");
 		Estudiante e1 = new Estudiante(4,"cuatro", "cuatro de los ultimos" ,29550564,44,"femenina","4a");
+		// Estudiante e1= new Estudiante (5,"cinco"m)
 		RepositoryFactory.get_repositorio_estudiante().save(e1);
 	}
-
+	
 	private static void puntoB() {
-		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(4); //por numero de libreta
+		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(1); //por numero de libreta
 		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(1); 
-		Inscripto i =new Inscripto(e, c, 14, false);
+		Inscripto i =new Inscripto(e, c, 2000);
 		RepositoryFactory.get_repositorio_inscripto().save(i);
-
+		
 	}
-
+	// private static void puntoB2() {
+			// Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(2); //por numero de libreta
+			// Carrera c=RepositoryFactory.get_repositorio_carrera().findById(3); 
+			// Inscripto i= RepositoryFactory.get_repositorio_inscripto().findById(null)
+	// }
+	
 	private static void puntoC() {
 		List<Estudiante> estudiantes = RepositoryFactory.get_repositorio_estudiante().findAll();
 		System.out.println(estudiantes);

@@ -36,7 +36,7 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 	@Override
 	public Carrera save(Carrera carrera) {
 		RepositoryFactory.getEntity_manager().getTransaction().begin();
-		if (carrera.getId_carrera() == 0) {
+		if (carrera.getId_carrera() == null) {
 			RepositoryFactory.getEntity_manager().persist(carrera);
 			RepositoryFactory.getEntity_manager().getTransaction().commit();
 			RepositoryFactory.cerrar_conexion();
@@ -71,11 +71,11 @@ public class CarreraRepositoryImpl implements CarreraRepository {
      * los años de manera cronológica
 	 */
 	public List<EstudianteCarreraDTO> reporte() {
-		String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, i.fecha as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c ORDER BY c.nombre, i.fecha";
+		String consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, i.anioIngreso as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c";
 		TypedQuery<EstudianteCarreraDTO> query = RepositoryFactory.getEntity_manager().createQuery(consulta, EstudianteCarreraDTO.class);
 		List<EstudianteCarreraDTO> ingresos=query.getResultList();
 		
-		consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, i.fechaEgreso as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c WHERE i.fechaEgreso IS NOT NULL ";
+		consulta= "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, i.anioEgreso as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c WHERE i.anioEgreso IS NOT NULL AND i.anioEgreso <> 0";
 		query = RepositoryFactory.getEntity_manager().createQuery(consulta, EstudianteCarreraDTO.class);
 		List<EstudianteCarreraDTO> egrersos=query.getResultList();
 		

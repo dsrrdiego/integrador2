@@ -32,7 +32,7 @@ public class EstudianteCarreraDTO implements Comparable{
         String accion = String.format("%1$-10s", accionSinFormato);
 
         String nombre=String.format("%1$-30s", (this.estudiante.getNombre()+"~"+this.estudiante.getApellido()));
-        return "\nFecha: "+this.fech+" "+carrera + accion+" Nombre: "+nombre+"|"+fechaEgres+ "]";
+        return "\n"+ carrera+"Fecha: "+this.fech+" "+ accion+" Nombre: "+nombre+"|"+fechaEgres+ "]";
     }
 
     @Override

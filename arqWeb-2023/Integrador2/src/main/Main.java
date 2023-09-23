@@ -24,7 +24,7 @@ public class Main {
 		// b) matricular un estudiante en una carrera
 		// puntoB();
 
-		//b2) ingresar fecha de egreso a tal aclumno tal carrera
+		//b2) ingresar fecha de egreso a tal o cual alumno de tal carrera
 		// puntoB2();
 
 		// c) recuperar todos los estudiantes, y especificar algún criterio de

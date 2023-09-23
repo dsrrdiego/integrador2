@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-09-2023 a las 21:15:47
+-- Tiempo de generación: 22-09-2023 a las 02:38:48
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -100,19 +100,19 @@ CREATE TABLE `Inscripto` (
   `fecha` varchar(255) DEFAULT NULL,
   `graduado` bit(1) DEFAULT NULL,
   `carrera` int(11) DEFAULT NULL,
-  `nro_libreta` int(11) DEFAULT NULL
+  `nro_libreta` int(11) DEFAULT NULL,
+  `fechaEgreso` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `Inscripto`
 --
 
-INSERT INTO `Inscripto` (`id`, `antiguedad`, `fecha`, `graduado`, `carrera`, `nro_libreta`) VALUES
-(0, 10, NULL, b'0', 2, 2),
-(6, 10, NULL, b'0', 2, 1),
-(7, 12, NULL, b'1', 2, 2),
-(8, 13, NULL, b'1', 2, 3),
-(9, 14, NULL, b'0', 1, 4);
+INSERT INTO `Inscripto` (`id`, `antiguedad`, `fecha`, `graduado`, `carrera`, `nro_libreta`, `fechaEgreso`) VALUES
+(6, 10, '2005', b'0', 2, 1, '2010'),
+(7, 12, '2000', b'1', 2, 2, NULL),
+(8, 13, '1995', b'1', 2, 3, '2000'),
+(9, 14, '1999', b'0', 1, 4, NULL);
 
 --
 -- Índices para tablas volcadas

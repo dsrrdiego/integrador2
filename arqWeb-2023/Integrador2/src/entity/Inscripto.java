@@ -3,73 +3,55 @@ package entity;
 import javax.persistence.*;
 
 @Entity
+@IdClass(claveCompuestaInscripto.class)
 public class Inscripto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-
-	private int id;
-
 	@ManyToOne
-    @JoinColumn(name = "nro_libreta")
+	@JoinColumn(name = "nro_libreta")
 	private Estudiante estudiante;
 
+	@Id
 	@ManyToOne
-    @JoinColumn(name = "carrera")
+	@JoinColumn(name = "carrera")
 	private Carrera carrera;
 
 	@Column
-	private int antiguedad;
+	private int anioIngreso;
 
 	@Column
-	private boolean graduado;
-
-	@Column
-	private String fecha;
-	
-	@Column
-	private String fechaEgreso;
-
+	private int anioEgreso;
 
 	public Inscripto() {
 		super();
 	}
 
-	public String getFechaEgreso() {
-		return fechaEgreso;
+	public int getAnioEgreso() {
+		return anioEgreso;
 	}
 
-	public Inscripto(Estudiante e, Carrera c, int antiguedad, boolean graduado) {
-		this.estudiante =e ;
+	public Inscripto(Estudiante e, Carrera c, int anioIngreso) {
+		this.estudiante = e;
 		this.carrera = c;
-		this.antiguedad = antiguedad;
-		this.graduado = graduado;
+		this.anioIngreso = anioIngreso;
 	}
 
-	public void setAntiguedad(int antiguedad) {
-		this.antiguedad = antiguedad;
+	public int getAnioIngreso() {
+		return anioIngreso;
 	}
 
-	public boolean isGraduado() {
-		return graduado;
+	public void setAnioEgreso(int anio) {
+		this.anioEgreso = anio;
 	}
 
-	public void setGraduado(boolean graduado) {
-		this.graduado = graduado;
-	}
-
-	public int getId(){
-		return this.estudiante.getId();
+	public Estudiante getId() {
+		return this.estudiante;
 	}
 
 	@Override
 	public String toString() {
-		return "Inscripto [id=" + id + ", estudiante=" + estudiante + ", carrera=" + carrera + ", antiguedad="
-				+ antiguedad + ", graduado=" + graduado + ", fecha=" + fecha + "]";
+		return "Inscripto [estudiante=" + estudiante.getId() + ", carrera=" + carrera.getId_carrera() + ", anioIngreso="
+				+ anioIngreso
+				+ ", anioEgreso=" + anioEgreso + "]";
 	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
 }

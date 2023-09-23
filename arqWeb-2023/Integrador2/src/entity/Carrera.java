@@ -30,8 +30,6 @@ public class Carrera {
 	private String institucion;
 
 
-	// @ManyToMany
-	// private Set<Estudiante> inscriptoSet=new HashSet<>();
 
 	@ManyToMany(mappedBy = "carreras")
     private List<Estudiante> estudiantes;
@@ -80,7 +78,7 @@ public class Carrera {
 
 	@Override
 	public String toString() {
-		return "Carrera [id_carrera= " + id_carrera + ", nombre= " + nombre + ", duracion= " + duracion + ", institucion= "
+		return "\nCarrera [id_carrera= " + id_carrera + ", nombre= " + nombre + ", duracion= " + duracion + ", institucion= "
 				+ institucion + "]";
 	}
 

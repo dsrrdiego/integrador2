@@ -52,4 +52,10 @@ public class Inscripto {
 	public Estudiante getId(){
 		return this.estudiante;
 	}
+
+	@Override
+	public String toString() {
+		return "Inscripto [estudiante=" + estudiante.getId() + ", carrera=" + carrera.getId_carrera() + ", anioIngreso=" + anioIngreso
+				+ ", anioEgreso=" + anioEgreso + "]";
+	}
 }

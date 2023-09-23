@@ -10,7 +10,6 @@ import entity.Inscripto;
 import repository.RepositoryFactory;
 
 public class Main {
-	// public final static String UnidadDePresistencia="Derby";
 	public final static String UnidadDePresistencia="MySql";
 
 	public static void main(String[] args) {
@@ -58,21 +57,20 @@ public class Main {
 		// Estudiante e1 = new Estudiante(2,"dos", "dosillino" ,29550562,42,"masculine","2arroyos");
 		// Estudiante e1 = new Estudiante(3,"tres", "triquinosis" ,29550563,23,"femenina","tres arroyos");
 		// Estudiante e1 = new Estudiante(4,"cuatro", "cuartirolo" ,29550564,14,"femenina","tres algarrobos");
-		// Estudiante e1= new Estudiante (5,"cinco"m)
 		RepositoryFactory.get_repositorio_estudiante().save(e1);
 	}
 	
 	private static void puntoB() {
 		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(3); //por numero de libreta
-		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(1); 
-		Inscripto i =new Inscripto(e, c, 2007);
+		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(2); 
+		Inscripto i =new Inscripto(e, c, 2006);
 		RepositoryFactory.get_repositorio_inscripto().save(i);
 		
 	}
 	private static void puntoB2() {
-		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(3); //por numero de libreta
+		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(1); //por numero de libreta
 		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(2); 
-		RepositoryFactory.get_repositorio_inscripto().setEgreso(e, c, 2014);
+		RepositoryFactory.get_repositorio_inscripto().setEgreso(e, c, 2006);
 	}
 	
 	private static void puntoC() {

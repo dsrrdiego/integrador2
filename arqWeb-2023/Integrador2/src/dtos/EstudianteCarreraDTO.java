@@ -17,7 +17,7 @@ public class EstudianteCarreraDTO {
         this.estudiante = estudiante;
         this.carrera = carrera;
         this.inscripto= inscripto;
-        this.fech=fech;
+        this.fech=fech; //esta fecha se corresponde tanto como ingreso como egreso
     }
 
     @Override
@@ -35,12 +35,6 @@ public class EstudianteCarreraDTO {
         return "\n"+ carrera+"Fecha: "+this.fech+" "+ accion+" Nombre: "+nombre+"|"+fechaEgres+ "]";
     }
 
-    // @Override
-    // public int compareTo(Object arg0) {
-    //     EstudianteCarreraDTO e=(EstudianteCarreraDTO) arg0;
-    //     return inscripto.getFecha().compareTo(e.getFechaCarrera());
-    // }
-
     public String getNombreCarrera(){
         return this.carrera.getNombre();
     }
@@ -50,8 +44,6 @@ public class EstudianteCarreraDTO {
     public int getFech(){
         return this.fech;
     }
-
-    
-    
+ 
     
 }

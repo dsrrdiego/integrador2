@@ -3,25 +3,19 @@ package main;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import dtos.EstudianteCarreraDTO;
 import entity.Carrera;
 import entity.Estudiante;
 import entity.Inscripto;
 import repository.RepositoryFactory;
 
-// import entity.Estudiante;
-
 public class Main {
 	// public final static String UnidadDePresistencia="Derby";
 	public final static String UnidadDePresistencia="MySql";
+
 	public static void main(String[] args) {
-		
-		
 		RepositoryFactory.getInstance(UnidadDePresistencia);
+
 		// a) dar de alta un estudiante
 		// puntoA();
 		//No es autoincremental porque el Id es el numero de libreta
@@ -38,7 +32,6 @@ public class Main {
 		// ordenamiento simple.
 		// puntoC();
 
-
 		// d) recuperar un estudiante, en base a su número de libreta universitaria.
 		// puntoD(2);
 
@@ -54,13 +47,9 @@ public class Main {
 		// puntoG();
 
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
-		// información de los
-		// inscriptos y egresados por año. Se deben ordenar las carreras
-		// alfabéticamente, y presentar
-		// los años de manera cronológica.
+		// información de los inscriptos y egresados por año. Se deben ordenar las carreras
+		// alfabéticamente, y presentar los años de manera cronológica.
 		punto3();
-
-
 	}
 	
 	
@@ -124,22 +113,20 @@ public class Main {
 		// información de los inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar los años de manera cronológica.
 
-
 		List<EstudianteCarreraDTO> carreras =RepositoryFactory.get_repositorio_carrera().reporte();
-		// carreras.sort(null);
 		carreras.sort(Comparator
-		.comparing(EstudianteCarreraDTO::getNombreCarrera) // Orden alfabético por nombre
-		.thenComparing(EstudianteCarreraDTO::getFech) // Orden creciente por año de nacimiento
-	);
+		.comparing(EstudianteCarreraDTO::getNombreCarrera) 
+		.thenComparing(EstudianteCarreraDTO::getFech)
+		);
 		System.out.println(carreras);
 		
 	}
 
 	private static void puntoAgregarCarreras() {
-		// Carrera c=new Carrera("Periodismo", 5,"UNICEN");
+		Carrera c=new Carrera("Periodismo", 5,"UNICEN");
 		// Carrera c =new Carrera("Arquitectura Web", 1,"UNICEN");
 		// Carrera c =new Carrera("Odontologia", 3,"UBA");
-		Carrera c =new Carrera("Arqueologia", 23,"EGIPCIAN");
+		// Carrera c =new Carrera("Arqueologia", 23,"EGIPCIAN");
 		RepositoryFactory.get_repositorio_carrera().save(c);
 		}
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
+import dtos.CarreraYCantidadDTO;
 import dtos.EstudianteCarreraDTO;
 import entity.Carrera;
 
@@ -50,13 +51,13 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 		RepositoryFactory.getEntity_manager().remove(Carrera);
 	}
 
-	public List<Carrera> xEstudiantesInscriptos() {
+	public List<CarreraYCantidadDTO> xEstudiantesInscriptos() {
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
+		String consulta = "SELECT NEW dtos.CarreraYCantidadDTO(c, SIZE(c.estudiantes)) FROM Carrera c ORDER BY SIZE(c.estudiantes)";
 
-		String consulta = "SELECT c FROM Carrera c ORDER BY SIZE(c.estudiantes) ";
-		TypedQuery<Carrera> query = RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
-		return query.getResultList();
+		// String consulta = "SELECT c, SIZE(c.estudiantes) as cantidad FROM Carrera c ORDER BY SIZE(c.estudiantes) ";
+		return RepositoryFactory.getEntity_manager().createQuery(consulta, CarreraYCantidadDTO.class).getResultList();
 	}
 
 	/**

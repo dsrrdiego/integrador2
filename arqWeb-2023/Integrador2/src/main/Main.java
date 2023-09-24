@@ -3,6 +3,7 @@ package main;
 import java.util.Comparator;
 import java.util.List;
 
+import dtos.CarreraYCantidadDTO;
 import dtos.EstudianteCarreraDTO;
 import entity.Carrera;
 import entity.Estudiante;
@@ -39,7 +40,7 @@ public class Main {
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
-		// puntoF();
+		puntoF();
 
 		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
 		// de residencia.
@@ -48,7 +49,7 @@ public class Main {
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
 		// información de los inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar los años de manera cronológica.
-		punto3();
+		// punto3();
 	}
 	
 	
@@ -62,8 +63,8 @@ public class Main {
 	
 	private static void puntoB() {
 		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(3); //por numero de libreta
-		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(2); 
-		Inscripto i =new Inscripto(e, c, 2006);
+		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(3); 
+		Inscripto i =new Inscripto(e, c, 2016);
 		RepositoryFactory.get_repositorio_inscripto().save(i);
 		
 	}
@@ -92,7 +93,7 @@ public class Main {
 	private static void puntoF() {
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
-		List<Carrera> c = RepositoryFactory.get_repositorio_carrera().xEstudiantesInscriptos();
+		List<CarreraYCantidadDTO> c = RepositoryFactory.get_repositorio_carrera().xEstudiantesInscriptos();
 		System.out.println(c);
 	}
 	

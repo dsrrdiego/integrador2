@@ -11,7 +11,10 @@ import entity.Inscripto;
 import repository.RepositoryFactory;
 
 public class Main {
-	public final static String UnidadDePresistencia="MySql";
+	// public final static String UnidadDePresistencia="MySql";
+	public final static String UnidadDePresistencia="Derby";
+
+	//nombre seteado par mySql: tp2
 
 	public static void main(String[] args) {
 		RepositoryFactory.getInstance(UnidadDePresistencia);
@@ -40,7 +43,7 @@ public class Main {
 
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
-		puntoF();
+		// puntoF();
 
 		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
 		// de residencia.
@@ -49,7 +52,7 @@ public class Main {
 		// 3) Generar un reporte de las carreras, que para cada carrera incluya
 		// información de los inscriptos y egresados por año. Se deben ordenar las carreras
 		// alfabéticamente, y presentar los años de manera cronológica.
-		// punto3();
+		punto3();
 	}
 	
 	
@@ -62,15 +65,16 @@ public class Main {
 	}
 	
 	private static void puntoB() {
-		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(3); //por numero de libreta
-		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(3); 
-		Inscripto i =new Inscripto(e, c, 2016);
+		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(4); //por numero de libreta
+		// System.out.println(RepositoryFactory.get_repositorio_carrera().findAll());
+		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(401); 
+		Inscripto i =new Inscripto(e, c, 2000);
 		RepositoryFactory.get_repositorio_inscripto().save(i);
 		
 	}
 	private static void puntoB2() {
-		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(1); //por numero de libreta
-		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(2); 
+		Estudiante e=RepositoryFactory.get_repositorio_estudiante().findById(4); //por numero de libreta
+		Carrera c=RepositoryFactory.get_repositorio_carrera().findById(401); 
 		RepositoryFactory.get_repositorio_inscripto().setEgreso(e, c, 2006);
 	}
 	
@@ -122,9 +126,9 @@ public class Main {
 	}
 
 	private static void puntoAgregarCarreras() {
-		Carrera c=new Carrera("Periodismo", 5,"UNICEN");
+		// Carrera c=new Carrera("Periodismo", 5,"UNICEN");
 		// Carrera c =new Carrera("Arquitectura Web", 1,"UNICEN");
-		// Carrera c =new Carrera("Odontologia", 3,"UBA");
+		Carrera c =new Carrera("Odontologia", 3,"UBA");
 		// Carrera c =new Carrera("Arqueologia", 23,"EGIPCIAN");
 		RepositoryFactory.get_repositorio_carrera().save(c);
 		}

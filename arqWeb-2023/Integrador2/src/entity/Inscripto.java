@@ -19,16 +19,11 @@ public class Inscripto {
 	@Column
 	private int fecha;
 
-	@Column
-	private int anioEgreso;
 
 	public Inscripto() {
 		super();
 	}
 
-	public int getAnioEgreso() {
-		return anioEgreso;
-	}
 
 	public int getAntiguedad() {
 		return antiguedad;
@@ -62,9 +57,6 @@ public class Inscripto {
 		return fecha;
 	}
 
-	public void setAnioEgreso(int anio) {
-		this.anioEgreso = anio;
-	}
 
 	public Estudiante getId() {
 		return this.estudiante;
@@ -74,6 +66,6 @@ public class Inscripto {
 	public String toString() {
 		return "Inscripto [estudiante=" + estudiante.getId() + ", carrera=" + carrera.getId_carrera() + ", fecha="
 				+ fecha
-				+ ", anioEgreso=" + anioEgreso + "]";
+				+ ", anioEgreso=" + (fecha+antiguedad) + "]";
 	}
 }

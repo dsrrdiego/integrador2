@@ -55,11 +55,6 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
 
-		// String consulta = "SELECT c FROM Carrera c ORDER BY SIZE(c.estudiantes) ";
-		// TypedQuery<Carrera> query =
-		// RepositoryFactory.getEntity_manager().createQuery(consulta, Carrera.class);
-		// return query.getResultList();
-
 		String consulta = "SELECT NEW dtos.CarreraConCantidadDTO(c , SIZE(c.estudiantes)) FROM Carrera c ORDER BY SIZE(c.estudiantes)";
 
 		return RepositoryFactory.getEntity_manager().createQuery(consulta,

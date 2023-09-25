@@ -75,7 +75,7 @@ public class CarreraRepositoryImpl implements CarreraRepository {
 				EstudianteCarreraDTO.class);
 		List<EstudianteCarreraDTO> ingresos = query.getResultList();
 
-		consulta = "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, (i.fecha + i. antiguedad) as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c WHERE i.esEgresado IS TRUE";
+		consulta = "SELECT NEW dtos.EstudianteCarreraDTO(c , e, i, (i.fecha + i. antiguedad) as fech) FROM Inscripto i JOIN i.estudiante e JOIN i.carrera c WHERE i.esEgresado = 1";
 		query = RepositoryFactory.getEntity_manager().createQuery(consulta, EstudianteCarreraDTO.class);
 		List<EstudianteCarreraDTO> egrersos = query.getResultList();
 

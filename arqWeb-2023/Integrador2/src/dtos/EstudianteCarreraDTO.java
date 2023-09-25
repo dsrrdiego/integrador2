@@ -28,7 +28,7 @@ public class EstudianteCarreraDTO {
         if (this.inscripto.getfecha()!=this.fech) accionSinFormato="EGRESÓ";
 
         String fechaEgres=" En curso";
-        if (this.inscripto.isEsEgresado()) fechaEgres=" Egresó en: "+(this.inscripto.getfecha()+this.inscripto.getAntiguedad());
+        if (this.inscripto.isEsEgresado()==1) fechaEgres=" Egresó en: "+(this.inscripto.getfecha()+this.inscripto.getAntiguedad());
         String accion = String.format("%1$-10s", accionSinFormato);
 
         String nombre=String.format("%1$-30s", (this.estudiante.getNombre()+"~"+this.estudiante.getApellido()));

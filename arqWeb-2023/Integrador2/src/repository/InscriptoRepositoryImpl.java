@@ -32,7 +32,7 @@ public class InscriptoRepositoryImpl implements InscriptoRepository {
 		i.setParameter("carr", c);
 		Inscripto inscripto = i.getSingleResult();
 		inscripto.setAntiguedad(antiguedad);
-		inscripto.setEsEgresado(true);
+		inscripto.setEsEgresado(1);
 		RepositoryFactory.getEntity_manager().getTransaction().commit();
 		RepositoryFactory.cerrar_conexion();
 	}

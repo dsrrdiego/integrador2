@@ -29,7 +29,7 @@ public class Inscripto {
 		return antiguedad;
 	}
 
-	public boolean isEsEgresado() {
+	public Integer isEsEgresado() {
 		return esEgresado;
 	}
 
@@ -40,12 +40,12 @@ public class Inscripto {
 		this.antiguedad = antiguedad;
 	}
 
-	public void setEsEgresado(boolean esEgresado) {
+	public void setEsEgresado(Integer esEgresado) {
 		this.esEgresado = esEgresado;
 	}
 
 	@Column 
-	private boolean esEgresado;
+	private Integer esEgresado;
 
 	public Inscripto(Estudiante e, Carrera c, int fecha) {
 		this.estudiante = e;
